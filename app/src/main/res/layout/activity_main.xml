@@ -8,16 +8,30 @@
 
 
     <Button
-        android:id="@+id/takePhotoButton"
-        android:layout_width="164dp"
-        android:layout_height="164dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="26dp"
+        android:id="@+id/button_to_g"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="188dp"
+        android:layout_height="174dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_marginBottom="16dp"
-        android:text="@string/button"
+        android:background="#01FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/takeFromGalleryButton"
+        app:layout_constraintHorizontal_bias="0.372"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/takePhotoButton"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/add_a_photo"
+        app:layout_constraintBottom_toBottomOf="@+id/button_to_g"
+        app:layout_constraintEnd_toEndOf="@+id/button_to_g"
+        app:layout_constraintStart_toStartOf="@+id/button_to_g"
+        app:layout_constraintTop_toTopOf="@+id/button_to_g" />
 
     <Button
         android:id="@+id/takeFromGalleryButton"

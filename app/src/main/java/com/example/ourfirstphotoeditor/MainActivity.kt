@@ -10,9 +10,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-        takePhotoButton.text="Take a photo"
+        takePhotoButton.setOnClickListener {  }
 
         takeFromGalleryButton.text="Сhoice a photo from the gallery"
 
