@@ -18,7 +18,10 @@ class MainActivity : AppCompatActivity() {
 
         infAboutTeamButton.text="О команде"
 
+        infAboutTeamButton.setOnClickListener {
 
+            Toast.makeText(this@MainActivity, "Test", Toast.LENGTH_LONG).show()
+        }
     }
 
 

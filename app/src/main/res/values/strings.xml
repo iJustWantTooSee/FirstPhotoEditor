@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">OurFirstPhotoEditor</string>
+    <string name="button">Button</string>
+
 </resources>
