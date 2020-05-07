@@ -11,9 +11,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        takePhotoButton.setOnClickListener {  }
 
-        takeFromGalleryButton.text="Сhoice a photo from the gallery"
+
+
 
         infAboutTeamButton.text="О команде"
 
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, "Test", Toast.LENGTH_LONG).show()
         }
 
-        takePhotoButton.setOnClickListener {
+        cameraButton.setOnClickListener {
             var intent = Intent(MainActivity@this, SecondActivity::class.java)
             startActivity(intent)
         }
