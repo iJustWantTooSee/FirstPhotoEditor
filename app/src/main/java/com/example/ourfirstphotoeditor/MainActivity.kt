@@ -1,5 +1,6 @@
 package com.example.ourfirstphotoeditor
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -19,6 +20,16 @@ class MainActivity : AppCompatActivity() {
         infAboutTeamButton.setOnClickListener {
 
             Toast.makeText(this@MainActivity, "Test", Toast.LENGTH_LONG).show()
+        }
+
+        takePhotoButton.setOnClickListener {
+            var intent = Intent(MainActivity@this, SecondActivity::class.java)
+            startActivity(intent)
+        }
+
+        takeFromGalleryButton.setOnClickListener {
+            var intent = Intent(MainActivity@this, SecondActivity::class.java)
+            startActivity(intent)
         }
     }
 
