@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity() {
 
     companion object {
@@ -27,12 +28,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         cameraButton.setOnClickListener {
-
-            startActivityForResult(cameraIntent, TAKE_PICTURE)
-
-
+            
             var intent = Intent(MainActivity@this, SecondActivity::class.java)
             startActivity(intent)
+            startActivityForResult(cameraIntent, TAKE_PICTURE)
         }
 
         takeFromGalleryButton.setOnClickListener {
@@ -40,6 +39,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+
 
 
 }
