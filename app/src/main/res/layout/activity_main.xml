@@ -10,15 +10,16 @@
     <Button
         android:id="@+id/cameraButton"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="205dp"
-        android:layout_height="197dp"
+        android:layout_width="191dp"
+        android:layout_height="191dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:background="#01000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <RelativeLayout
@@ -37,16 +38,18 @@
     <Button
         android:id="@+id/takeFromGalleryButton"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="206dp"
-        android:layout_height="197dp"
+        android:layout_width="191dp"
+        android:layout_height="191dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:background="#01000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
+        app:layout_constraintStart_toEndOf="@+id/cameraButton" />
+
 
     <RelativeLayout
         android:id="@+id/add_photo_a"
@@ -57,9 +60,9 @@
         android:background="@drawable/add_photo_alternate"
         app:layout_constraintBottom_toBottomOf="@+id/takeFromGalleryButton"
         app:layout_constraintEnd_toEndOf="@+id/takeFromGalleryButton"
-        app:layout_constraintStart_toEndOf="@+id/cameraButton"
-        app:layout_constraintTop_toTopOf="@+id/takeFromGalleryButton" />
-
+        app:layout_constraintStart_toStartOf="@+id/takeFromGalleryButton"
+        app:layout_constraintTop_toTopOf="@+id/takeFromGalleryButton"
+        app:layout_constraintVertical_bias="0.473" />
 
     <Button
         android:id="@+id/d_cube"
@@ -74,6 +77,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <!-- strings.xml -->
+
     <RelativeLayout
         android:id="@+id/icon_action"
         android:layout_width="48dp"
@@ -83,11 +89,10 @@
         android:background="@drawable/icon_action"
         app:layout_constraintBottom_toBottomOf="@+id/d_cube"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.789"
         app:layout_constraintStart_toStartOf="@+id/d_cube"
-        app:layout_constraintTop_toTopOf="@+id/d_cube" />
-
-
-    <!-- strings.xml -->
+        app:layout_constraintTop_toTopOf="@+id/d_cube"
+        app:layout_constraintVertical_bias="0.375" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
