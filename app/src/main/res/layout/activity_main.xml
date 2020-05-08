@@ -14,7 +14,8 @@
         android:layout_height="197dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="#01FFFFFF"
+        android:layout_marginEnd="8dp"
+        android:background="#01000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintHorizontal_bias="0.0"
@@ -40,7 +41,8 @@
         android:layout_height="197dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="#01FFFFFF"
+        android:layout_marginStart="8dp"
+        android:background="#01000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
@@ -58,15 +60,31 @@
         app:layout_constraintStart_toEndOf="@+id/cameraButton"
         app:layout_constraintTop_toTopOf="@+id/takeFromGalleryButton" />
 
+
     <Button
-        android:id="@+id/infAboutTeamButton"
-        android:layout_width="106dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/button"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/d_cube"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="#01000000"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/icon_action"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/icon_action"
+        app:layout_constraintBottom_toBottomOf="@+id/d_cube"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/d_cube"
+        app:layout_constraintTop_toTopOf="@+id/d_cube" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
