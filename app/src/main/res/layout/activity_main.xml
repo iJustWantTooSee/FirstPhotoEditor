@@ -11,13 +11,12 @@
         android:id="@+id/cameraButton"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="205dp"
-        android:layout_height="224dp"
+        android:layout_height="197dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="64dp"
         android:background="#01FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/takeFromGalleryButton"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -33,20 +32,19 @@
         app:layout_constraintStart_toStartOf="@+id/cameraButton"
         app:layout_constraintTop_toTopOf="@+id/cameraButton" />
 
+
     <Button
         android:id="@+id/takeFromGalleryButton"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="205dp"
-        android:layout_height="224dp"
+        android:layout_width="206dp"
+        android:layout_height="197dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="64dp"
         android:background="#01FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cameraButton" />
-
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <RelativeLayout
         android:id="@+id/add_photo_a"
@@ -69,5 +67,12 @@
         android:text="@string/button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="205dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
