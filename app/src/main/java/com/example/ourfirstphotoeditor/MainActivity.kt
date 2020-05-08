@@ -24,11 +24,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        infAboutTeamButton.text="О команде"
 
-        infAboutTeamButton.setOnClickListener {
 
-            Toast.makeText(this@MainActivity, "Наша команда: Виктор, Дарья, Кирилл", Toast.LENGTH_LONG).show()
+        d_cube.setOnClickListener {
+
+            Toast.makeText(this@MainActivity, "Здесь будет кубик, отвечаю", Toast.LENGTH_LONG).show()
         }
 
         cameraButton.setOnClickListener {
@@ -67,10 +67,12 @@ class MainActivity : AppCompatActivity() {
         dispatchTakePictureIntent()
     }
 
+<<<<<<< HEAD
     private fun handleSmallCameraPhoto(intent: Intent) {
         val extras = intent.extras
         mImageBitmap = extras!!["data"] as Bitmap?
         mImageView.setImageBitmap(mImageBitmap)
     }
 */
+
 }
