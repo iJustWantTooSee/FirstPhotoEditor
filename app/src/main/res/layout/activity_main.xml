@@ -11,7 +11,7 @@
     <Button
         android:id="@+id/cameraButton"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="191dp"
+        android:layout_width="0dp"
         android:layout_height="191dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -111,7 +111,7 @@
         android:gravity="center_horizontal|top"
         android:text="@string/you_look_ni"
         android:textAppearance="@style/you_look_ni"
-        android:textSize="60sp"
+        android:textSize="52sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
