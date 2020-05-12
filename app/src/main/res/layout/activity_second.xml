@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Android="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <!--ImageView in which image will be set-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 
         <Button
             android:id="@+id/backMainActivity2"
@@ -48,7 +51,9 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/backMainActivity"
             app:layout_constraintTop_toTopOf="@+id/backMainActivity"
-            app:layout_constraintVertical_bias="0.571" />
+            app:layout_constraintVertical_bias="0.571">
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/icon_conten"
@@ -67,17 +72,38 @@
 
 
         <?xml version="1.0" encoding="utf-8"?>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvAnimals"
-                android:layout_width="241dp"
-                android:layout_height="223dp" />
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="278dp"
+            android:layout_height="238dp"
+            android:layout_marginTop="168dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_image_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="334dp"
+            android:layout_height="246dp"
+            Android:layout_height="match_parent"
+            Android:layout_width="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
         </RelativeLayout>
 
+        <Android.support.v7.widget.RecyclerView
+            android:id="@+id/rvAnimals"
+            android:layout_width="285dp"
+            android:layout_height="225dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/relativeLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
