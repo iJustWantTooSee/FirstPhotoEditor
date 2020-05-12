@@ -1,33 +1,31 @@
 package com.example.ourfirstphotoeditor
 
+import android.Manifest
 import android.app.Activity
+import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.Manifest
-import android.content.ContentValues
-import android.os.Environment
 import android.provider.MediaStore
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
 import kotlinx.android.synthetic.main.activity_main.*
-import java.io.File
 import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
     companion object {
-       // val REQUEST_IMAGE_CAPTURE = 1
+        private val PERMISSION_CODE = 1000
+        private val IMAGE_CAPTURE_CODE = 1001
+        var image_uri: Uri? = null
+        var GALLERY_REQUEST_CODE =1
+        private const val PICK_IMAGE_REQUEST = 1
     }
-    private val PERMISSION_CODE = 1000;
-    private val IMAGE_CAPTURE_CODE = 1001
-    var image_uri: Uri? = null
-    //private val photoURI: Uri? = null
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,9 +45,26 @@ class MainActivity : AppCompatActivity() {
             //РЕМОНТ. ОТКРОЕТСЯ ЗАВТРА!
           /*  var intent = Intent(MainActivity@this, SecondActivity::class.java)
             startActivity(intent)*/
+           /* val photoPickerIntent = Intent(Intent.ACTION_PICK)
+            photoPickerIntent.type = "image/*"
+            startActivityForResult(photoPickerIntent, RESULT_LOAD_IMG)*/
+            */
+            pickFromGallery()
         }
     }
 
+    private fun pickFromGallery() {
+        //Create an Intent with action as ACTION_PICK
+        val intent = Intent(Intent.ACTION_PICK)
+        // Sets the type as image/*. This ensures only components of type image are selected
+        intent.type = "image/*"
+        //We pass an extra array with the accepted mime types. This will ensure only components with these MIME types as targeted.
+        val mimeTypes =
+            arrayOf("image/jpeg", "image/png")
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
+        // Launching the Intent
+        startActivityForResult(intent, GALLERY_REQUEST_CODE)
+    }
 
     fun checkCamera(){
         //if system os is Marshmallow or Above, we need to request runtime permission
@@ -73,7 +88,6 @@ class MainActivity : AppCompatActivity() {
             openCamera()
         }
     }
-
 
     private fun openCamera() {
         val values = ContentValues()
@@ -113,7 +127,20 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("imageUri", image_uri);
             startActivity(intent)
         }
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+            val uri = data!!.data
+            try {
+               // val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
+               // img_view.setImageBitmap(bitmap)
+                var intent = Intent(MainActivity@this, SecondActivity::class.java)
+                intent.putExtra("imageUri", uri);
+                startActivity(intent)
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
     }
+
 
     /*lateinit var currentPhotoPath: String
 
