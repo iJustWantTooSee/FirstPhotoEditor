@@ -12,8 +12,8 @@ public class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         val uri: Uri = intent.getParcelableExtra("imageUri")
-        imageView2.setImageURI(uri);
-        backMeny.setOnClickListener {
+        image_view.setImageURI(uri);
+        backMainActivity.setOnClickListener {
             var intent = Intent(SecondActivity@this, MainActivity::class.java)
             startActivity(intent)
         }

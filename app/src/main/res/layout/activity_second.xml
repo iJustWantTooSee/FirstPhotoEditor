@@ -19,7 +19,7 @@
     <!--Button to open camera-->
     <Button
         android:id="@+id/backMainActivity"
-        android:layout_width="wrap_content"
+        android:layout_width="112dp"
         android:layout_height="wrap_content"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
