@@ -30,10 +30,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
-
-
         <RelativeLayout
-            android:id="@+id/icon_conten"
+            android:id="@+id/icon_conten1"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentLeft="true"
@@ -45,7 +43,8 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/button"
             app:layout_constraintTop_toTopOf="@+id/button"
-            app:layout_constraintVertical_bias="0.535" />
+            app:layout_constraintVertical_bias="0.535"
+            tools:ignore="DuplicateIds" />
 
         <Button
             android:id="@+id/backMainActivity"
@@ -61,7 +60,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
-
         <RelativeLayout
             android:id="@+id/icon_hardwa"
             android:layout_width="48dp"
@@ -93,76 +91,231 @@
         <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="132dp"
+            android:layout_marginBottom="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view">
 
             <HorizontalScrollView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/button2"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:text="1" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <!--Button 1-->
+                        <Button
+                            android:id="@+id/button2"
+                            style="@style/Widget.AppCompat.Button.Borderless"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#00FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/button3"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <RelativeLayout
+                            android:id="@+id/icon_image_1"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/rotate"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/button2"
+                            app:layout_constraintStart_toStartOf="@+id/button2"
+                            app:layout_constraintTop_toTopOf="@+id/button2" />
+
+                        <!--Button 2-->
+                        <Button
+                            android:id="@+id/button3"
+                            style="@style/Widget.AppCompat.Button.Borderless"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#00FFFFFF"
+                            android:text="2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/button5"
+                            app:layout_constraintStart_toEndOf="@+id/button2"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <RelativeLayout
+                            android:id="@+id/icon_image_2"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:background="@drawable/color"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/button3"
+                            app:layout_constraintStart_toEndOf="@+id/button2"
+                            app:layout_constraintTop_toTopOf="@+id/button3"
+                            tools:ignore="DuplicateIds" />
+
+                        <!--Button 3-->
+                        <Button
+                            android:id="@+id/button5"
+                            style="@style/Widget.AppCompat.Button.Borderless"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#00FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/button6"
+                            app:layout_constraintStart_toEndOf="@+id/button3"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <RelativeLayout
+                            android:id="@+id/icon_action"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/scale"
+                            app:layout_constraintBottom_toBottomOf="@+id/button5"
+                            app:layout_constraintEnd_toEndOf="@+id/button5"
+                            app:layout_constraintStart_toEndOf="@+id/button3"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <!--Button 4-->
+                        <Button
+                            android:id="@+id/button6"
+                            style="@style/Widget.AppCompat.Button.Borderless"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#00FFFFFF"
+                            android:text="4"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/button7"
+                            app:layout_constraintStart_toEndOf="@+id/button5"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <RelativeLayout
+                            android:id="@+id/icon_maps_c"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/segment"
+                            app:layout_constraintBottom_toBottomOf="@+id/button6"
+                            app:layout_constraintEnd_toStartOf="@+id/button7"
+                            app:layout_constraintStart_toEndOf="@+id/button5"
+                            app:layout_constraintTop_toTopOf="@+id/button6" />
+
+                        <!--Button 5-->
+                        <Button
+                            android:id="@+id/button7"
+                            style="@style/Widget.AppCompat.Button.Borderless"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#00FFFFFF"
+                            android:text="5"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/button8"
+                            app:layout_constraintStart_toEndOf="@+id/button6"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <RelativeLayout
+                            android:id="@+id/icon_conten3"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/interpolation"
+                            app:layout_constraintBottom_toBottomOf="@+id/button7"
+                            app:layout_constraintEnd_toStartOf="@+id/button8"
+                            app:layout_constraintStart_toStartOf="@+id/button7"
+                            app:layout_constraintTop_toTopOf="@+id/button7" />
+
+                        <!--Button 6-->
+                        <Button
+                            android:id="@+id/button8"
+                            style="@style/Widget.AppCompat.Button.Borderless"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#00FFFFFF"
+                            android:text="6"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/button4"
+                            app:layout_constraintStart_toEndOf="@+id/button7"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <RelativeLayout
+                            android:id="@+id/icon_conten"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/create"
+                            app:layout_constraintBottom_toBottomOf="@+id/button8"
+                            app:layout_constraintEnd_toEndOf="@+id/button8"
+                            app:layout_constraintStart_toStartOf="@+id/button8"
+                            app:layout_constraintTop_toTopOf="@+id/button8" />
+
+                        <!--Button 7-->
+                        <Button
+                            android:id="@+id/button4"
+                            style="@style/Widget.AppCompat.Button.Borderless"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#00FFFFFF"
+                            android:text="7"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/button9"
+                            app:layout_constraintStart_toEndOf="@+id/button8"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <RelativeLayout
+                            android:id="@+id/icon_image_4"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/mask"
+                            app:layout_constraintBottom_toBottomOf="@+id/button4"
+                            app:layout_constraintEnd_toEndOf="@+id/button4"
+                            app:layout_constraintStart_toEndOf="@+id/button8"
+                            app:layout_constraintTop_toTopOf="@+id/button4" />
+
+                        <!--Button 8-->
+                        <Button
+                            android:id="@+id/button9"
+                            style="@style/Widget.AppCompat.Button.Borderless"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#00FFFFFF"
+                            android:text="3"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/button4"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="1.0" />
+                        <RelativeLayout
+                            android:id="@+id/icon_image_"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/bi_tri_filter"
+                            app:layout_constraintBottom_toBottomOf="@+id/button9"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/button4"
+                            app:layout_constraintTop_toTopOf="@+id/button9" />
 
 
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:text="2" />
 
-                <Button
-                    android:id="@+id/button5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:text="4" />
-
-                <Button
-                    android:id="@+id/button6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:text="5" />
-
-                <Button
-                    android:id="@+id/button7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:text="6" />
-
-                <Button
-                    android:id="@+id/button8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:text="7" />
-
-                <Button
-                    android:id="@+id/button4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:text="8" />
-
-                <Button
-                    android:id="@+id/button9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:text="3" />
-
-            </LinearLayout>
+                </LinearLayout>
             </HorizontalScrollView>
         </ScrollView>
 
