@@ -8,10 +8,13 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.File
 import java.io.IOException
 
 
@@ -24,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         var GALLERY_REQUEST_CODE =1
         private const val PICK_IMAGE_REQUEST = 1
     }
-
+    lateinit var currentPhotoPath: String
 
 
 
@@ -45,16 +48,13 @@ class MainActivity : AppCompatActivity() {
             //РЕМОНТ. ОТКРОЕТСЯ ЗАВТРА!
           /*  var intent = Intent(MainActivity@this, SecondActivity::class.java)
             startActivity(intent)*/
-           /* val photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type = "image/*"
-            startActivityForResult(photoPickerIntent, RESULT_LOAD_IMG)*/
-            */
             pickFromGallery()
         }
     }
 
     private fun pickFromGallery() {
-        //Create an Intent with action as ACTION_PICK
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+            == PackageManager.PERMISSION_GRANTED){ //Create an Intent with action as ACTION_PICK
         val intent = Intent(Intent.ACTION_PICK)
         // Sets the type as image/*. This ensures only components of type image are selected
         intent.type = "image/*"
@@ -64,6 +64,11 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
         // Launching the Intent
         startActivityForResult(intent, GALLERY_REQUEST_CODE)
+        }
+        else
+        {
+            Toast.makeText(this@MainActivity, "I'm sorry but you can't come here", Toast.LENGTH_LONG).show()
+        }
     }
 
     fun checkCamera(){
@@ -142,63 +147,16 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    /*lateinit var currentPhotoPath: String
 
-    @Throws(IOException::class)
-    private fun createImageFile(): File {
-        // Create an image file name
-        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-        val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile(
-            "JPEG_${timeStamp}_", /* prefix */
-            ".jpg", /* suffix */
-            storageDir /* directory */
-        ).apply {
-            // Save a file: path for use with ACTION_VIEW intents
-            currentPhotoPath = absolutePath
-        }
-    }
-    val REQUEST_TAKE_PHOTO = 1
+    /*private fun createImageFile(): File {
+        val imageFileName = "JPEG_temp"
+        val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val image = File.createTempFile(imageFileName, ".jpg", storageDir)
 
-    private fun dispatchTakePictureIntent() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            // Ensure that there's a camera activity to handle the intent
-            takePictureIntent.resolveActivity(packageManager)?.also {
-                // Create the File where the photo should go
-                val photoFile: File? = try {
-                    createImageFile()
-                } catch (ex: IOException) {
-                    // Error occurred while creating the File
+        currentPhotoPath = image.absolutePath
 
-                    null
-                }
-                // Continue only if the File was successfully created
-                photoFile?.also {
-                    val photoURI: Uri = FileProvider.getUriForFile(
-                        this,
-                        "com.example.ourfirstphotoeditor.fileprovider",
-                        it
-                    )
-                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                    startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO)
-                }
-            }
-        }
-    }
-    override fun onActivityResult(
-        requestCode: Int,
-        resultCode: Int,
-        data: Intent?
-    ) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
-            var intent = Intent(MainActivity@this, SecondActivity::class.java)
-            intent.putExtra("imageUri", photoURI);
-            startActivity(intent)
-
-        }
-    }
-*/
+        return image
+    }*/
 
 }
 

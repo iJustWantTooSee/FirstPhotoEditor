@@ -19,4 +19,7 @@ public class SecondActivity : AppCompatActivity() {
         }
 
     }
+
+
+
 }
