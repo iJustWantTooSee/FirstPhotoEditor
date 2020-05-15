@@ -23,13 +23,11 @@
             android:layout_height="76dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
             android:backgroundTint="#00FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/image_view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <RelativeLayout
             android:id="@+id/icon_conten1"
@@ -54,13 +52,11 @@
             android:layout_height="76dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
             android:backgroundTint="#00FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toTopOf="@+id/image_view"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <RelativeLayout
             android:id="@+id/icon_hardwa"
@@ -79,7 +75,7 @@
 
         <ImageView
             android:id="@+id/image_view"
-            android:layout_width="380dp"
+            android:layout_width="410dp"
             android:layout_height="438dp"
             android:layout_marginTop="106dp"
             android:scaleType="centerCrop"
@@ -327,6 +323,21 @@
                 </LinearLayout>
             </HorizontalScrollView>
         </ScrollView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="205dp" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="top"
+            tools:layout_editor_absoluteX="122dp"
+            tools:layout_editor_absoluteY="106dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
