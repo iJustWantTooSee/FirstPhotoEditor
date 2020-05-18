@@ -19,6 +19,31 @@ public class SecondActivity : AppCompatActivity() {
             var intent = Intent(SecondActivity@this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        rotate.setOnClickListener(){
+            replaceFragment(RotateFragment())
+        }
+        filters.setOnClickListener(){
+            replaceFragment(FiltersFragment())
+        }
+        scale.setOnClickListener(){
+            replaceFragment(ScaleFragment())
+        }
+        segm.setOnClickListener(){
+            replaceFragment(SegmentationFragment())
+        }
+        inter.setOnClickListener(){
+            replaceFragment(InterpolationFragment())
+        }
+        retouch.setOnClickListener(){
+            replaceFragment(RetouchingFragment())
+        }
+        mask.setOnClickListener(){
+            replaceFragment(MaskFragment())
+        }
+        bitri.setOnClickListener(){
+            replaceFragment(BiTriFiltrationFragment())
+        }
     }
 
     public fun replaceFragment(fragment: Fragment) {
