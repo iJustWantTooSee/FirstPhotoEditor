@@ -3,5 +3,8 @@
     <string name="button">Button</string>
     <string name="you_look_ni">You look nice today</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>
