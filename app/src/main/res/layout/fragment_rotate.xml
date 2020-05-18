@@ -5,7 +5,8 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RotateFragment" >
+    tools:context=".RotateFragment"
+    android:background="#33FF00">
 
     <SeekBar
         android:id="@+id/seekBar2"
