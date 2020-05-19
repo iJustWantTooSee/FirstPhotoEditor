@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         var image_uri: Uri? = null
         var GALLERY_REQUEST_CODE =1
         private const val PICK_IMAGE_REQUEST = 1
+        var chCamera:Boolean=false
+        var chGallery:Boolean=false
     }
     lateinit var currentPhotoPath: String
 
@@ -45,16 +47,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         takeFromGalleryButton.setOnClickListener {
-            //РЕМОНТ. ОТКРОЕТСЯ ЗАВТРА!
-          /*  var intent = Intent(MainActivity@this, SecondActivity::class.java)
-            startActivity(intent)*/
-            pickFromGallery()
+            cheackGallery()
         }
     }
 
     private fun pickFromGallery() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-            == PackageManager.PERMISSION_GRANTED){ //Create an Intent with action as ACTION_PICK
         val intent = Intent(Intent.ACTION_PICK)
         // Sets the type as image/*. This ensures only components of type image are selected
         intent.type = "image/*"
@@ -64,11 +61,6 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
         // Launching the Intent
         startActivityForResult(intent, GALLERY_REQUEST_CODE)
-        }
-        else
-        {
-            Toast.makeText(this@MainActivity, "I'm sorry but you can't come here", Toast.LENGTH_LONG).show()
-        }
     }
 
     fun checkCamera(){
@@ -79,6 +71,7 @@ class MainActivity : AppCompatActivity() {
                 checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_DENIED){
                 //permission was not enabled
+                chCamera=true
                 val permission = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 //show popup to request permission
                 requestPermissions(permission, PERMISSION_CODE)
@@ -91,6 +84,30 @@ class MainActivity : AppCompatActivity() {
         else{
             //system os is < marshmallow
             openCamera()
+        }
+    }
+
+    fun cheackGallery(){
+        //if system os is Marshmallow or Above, we need to request runtime permission
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            if (checkSelfPermission(Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_DENIED ||
+                checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_DENIED){
+                //permission was not enabled
+                chGallery=true
+                val permission = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                //show popup to request permission
+                requestPermissions(permission, PERMISSION_CODE)
+            }
+            else{
+                //permission already granted
+                pickFromGallery()
+            }
+        }
+        else{
+            //system os is < marshmallow
+            pickFromGallery()
         }
     }
 
@@ -112,7 +129,12 @@ class MainActivity : AppCompatActivity() {
                 if (grantResults.size > 0 && grantResults[0] ==
                     PackageManager.PERMISSION_GRANTED){
                     //permission from popup was granted
+                    if (chCamera){
                     openCamera()
+                    }
+                    else{
+                        pickFromGallery()
+                    }
                 }
                 else{
                     //permission from popup was denied
