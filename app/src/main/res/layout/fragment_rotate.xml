@@ -6,19 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RotateFragment"
-    android:background="#33FF00">
+    android:background="#ffffff">
 
 
     <SeekBar
-        android:id="@+id/seekBar3"
+        android:id="@+id/seekRotate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:isb_progress_int="true"
-        android:isb_show_indicator="none"
-        android:isb_show_thumb_text="true"
+
         android:max="360"
         android:progress="180"
-        android:progressTint="#FFFFFF"
+        android:progressTint="@color/colorPrimaryDark"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
