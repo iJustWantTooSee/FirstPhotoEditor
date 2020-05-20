@@ -8,28 +8,32 @@
     tools:context=".RotateFragment"
     android:background="#33FF00">
 
+
     <SeekBar
-        android:id="@+id/seekBar"
-        style="@style/Widget.AppCompat.SeekBar"
-        android:layout_width="295dp"
-        android:layout_height="28dp"
+        android:id="@+id/seekBar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:isb_progress_int="true"
+        android:isb_show_indicator="none"
+        android:isb_show_thumb_text="true"
         android:max="360"
         android:progress="180"
         android:progressTint="#FFFFFF"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55" />
+        app:layout_constraintVertical_bias="0.499"
+        tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/Angle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="SetAngle"
-        android:textColorLink="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
