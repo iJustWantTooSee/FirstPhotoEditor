@@ -25,11 +25,11 @@ class ScaleFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        /*
+
         super.onViewCreated(view, savedInstanceState)
 
         if (Photo == null) {
-           Photo = (activity!!.image_view.drawable as BitmapDrawable).bitmap
+           Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
             //EditorActivity.States.states.add(ivPhoto!!)
         }
         textViewScale.text = "100% of image"
@@ -50,7 +50,7 @@ class ScaleFragment : Fragment() {
 
         })
 
-         */
+
     }
 
 
