@@ -150,18 +150,27 @@ class MainActivity : AppCompatActivity() {
         if (resultCode == Activity.RESULT_OK){
             //set image captured to image view
            // image_view.setImageURI(image_uri)
-            var intent = Intent(MainActivity@this, SecondActivity::class.java)
-            intent.putExtra("imageUri", image_uri);
-            startActivity(intent)
+
+            if (image_uri!=null){
+                var intent = Intent(MainActivity@this, SecondActivity::class.java)
+                intent.putExtra("imageUri", image_uri);
+                startActivity(intent)
+            }
+
         }
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             val uri = data!!.data
             try {
                // val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
                // img_view.setImageBitmap(bitmap)
-                var intent = Intent(MainActivity@this, SecondActivity::class.java)
-                intent.putExtra("imageUri", uri);
-                startActivity(intent)
+                if (uri!=null) {
+                    var intent = Intent(MainActivity@ this, SecondActivity::class.java)
+                    intent.putExtra("imageUri", uri);
+                    startActivity(intent)
+                }
+                else{
+                    Toast.makeText(this, "Please select a photo", Toast.LENGTH_SHORT).show()
+                }
             } catch (e: IOException) {
                 e.printStackTrace()
             }
