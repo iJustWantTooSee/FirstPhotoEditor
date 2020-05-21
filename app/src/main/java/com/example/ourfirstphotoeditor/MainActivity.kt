@@ -10,9 +10,11 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 import java.io.IOException
@@ -49,6 +51,11 @@ class MainActivity : AppCompatActivity() {
         takeFromGalleryButton.setOnClickListener {
             cheackGallery()
         }
+        val ivImg: ImageView = findViewById(R.id.imageView1)
+        Glide.with(this)
+            .load(R.drawable.giphy)
+            .into(ivImg)
+
     }
 
     private fun pickFromGallery() {
