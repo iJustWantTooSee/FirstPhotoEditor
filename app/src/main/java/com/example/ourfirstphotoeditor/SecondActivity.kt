@@ -28,6 +28,9 @@ public class SecondActivity : AppCompatActivity() {
         filters.setOnClickListener(){
             replaceFragment(FiltersFragment())
         }
+        bright.setOnClickListener(){
+            replaceFragment(BrightFragment())
+        }
         scale.setOnClickListener(){
             replaceFragment(ScaleFragment())
         }

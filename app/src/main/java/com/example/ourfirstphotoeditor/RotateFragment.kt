@@ -12,7 +12,6 @@ import android.widget.SeekBar
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_second.*
 import kotlinx.android.synthetic.main.fragment_rotate.*
-import kotlinx.android.synthetic.main.fragment_scale.*
 
 
 class RotateFragment : Fragment() {
