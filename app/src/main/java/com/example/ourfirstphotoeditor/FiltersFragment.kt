@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_second.*
 import kotlinx.android.synthetic.main.fragment_filters.*
+import kotlin.math.min
 
 class FiltersFragment : Fragment() {
 
@@ -184,9 +185,9 @@ class FiltersFragment : Fragment() {
                 g= Color.green(pixelsArray[y*width+x])
                 b= Color.blue(pixelsArray[y*width+x])
 
-                red =(r * 0.393 + g * 0.769 + b * 0.189).toInt()
-                green =(r * 0.349 + g * 0.686 + b * 0.168).toInt()
-                blue =(r * 0.272 + g * 0.534 + b * 0.131).toInt()
+                red =min(255,(r * 0.393 + g * 0.769 + b * 0.189).toInt())
+                green =min(255,(r * 0.349 + g * 0.686 + b * 0.168).toInt())
+                blue =min(255,(r * 0.272 + g * 0.534 + b * 0.131).toInt())
 
                 temp[y*width+x]= Color.rgb(red,green,blue)
             }
@@ -218,11 +219,11 @@ class FiltersFragment : Fragment() {
                 blue=Color.blue(pixelsArray[y*width+x])
 
                 avg+=(red*0.299+green*0.587+blue*0.114).toInt()
-                avg/=(height*width)
+
 
             }
         }
-
+        avg/=(height*width)
         for (i in 0 until 256){
             temp=(avg+coefficient*(i-avg)).toInt()
             if (temp<0){
