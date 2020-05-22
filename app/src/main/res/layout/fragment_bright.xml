@@ -14,8 +14,9 @@
         android:layout_width="380dp"
         android:layout_height="wrap_content"
 
-        android:max="360"
-        android:progress="180"
+        android:max="300"
+        android:min="0"
+        android:progress="100"
         android:progressTint="#191919"
 
         app:layout_constraintBottom_toBottomOf="parent"
