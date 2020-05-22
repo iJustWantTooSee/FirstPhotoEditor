@@ -70,12 +70,13 @@
         android:id="@+id/image_view"
         android:layout_width="410dp"
         android:layout_height="440dp"
+        android:contentDescription="TODO"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_image_black_24dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -175,7 +176,9 @@
                         app:layout_constraintEnd_toEndOf="@+id/bright"
                         app:layout_constraintStart_toEndOf="@+id/filters"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.428" />
+                        app:layout_constraintVertical_bias="0.428" >
+
+                    </RelativeLayout>
 
                     <!--Button 4-->
                     <Button
@@ -201,7 +204,9 @@
                         app:layout_constraintEnd_toEndOf="@+id/scale"
                         app:layout_constraintStart_toEndOf="@+id/bright"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.571" />
+                        app:layout_constraintVertical_bias="0.571" >
+
+                    </RelativeLayout>
 
                     <!--Button 5-->
                     <Button
@@ -338,13 +343,6 @@
         </HorizontalScrollView>
     </ScrollView>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="205dp" />
-
     <fragment
         android:id="@+id/fr_place"
         android:name="com.example.ourfirstphotoeditor.PlaceFragment"
@@ -355,6 +353,25 @@
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fr_place">
+
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50121653" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -369,13 +386,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.127" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.147" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"

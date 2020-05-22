@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
-import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_second.*
 import kotlinx.android.synthetic.main.fragment_scale.*
 
