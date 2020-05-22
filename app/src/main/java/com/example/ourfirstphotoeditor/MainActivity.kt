@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         }
         val ivImg: ImageView = findViewById(R.id.imageView1)
         Glide.with(this)
-            .load(R.drawable.seawave)
+            .load(R.drawable.giphy)
             .into(ivImg)
 
     }

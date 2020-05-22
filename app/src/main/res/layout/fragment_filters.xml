@@ -5,8 +5,8 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FiltersFragment"
-    android:background="#ffffff">
+    android:background="#000000"
+    tools:context=".FiltersFragment">
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -58,8 +58,8 @@
                     android:layout_height="76dp"
                     android:layout_weight="1"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/filter_1"
                     app:layout_constraintEnd_toStartOf="@+id/filter_3"
+                    app:layout_constraintStart_toEndOf="@+id/filter_1"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:layout_editor_absoluteX="88dp" />
 
@@ -70,9 +70,9 @@
                     android:layout_height="76dp"
                     android:layout_weight="1"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/filter_2"
-
                     app:layout_constraintEnd_toStartOf="@+id/filter_4"
+
+                    app:layout_constraintStart_toEndOf="@+id/filter_2"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
@@ -82,9 +82,9 @@
                     android:layout_height="76dp"
                     android:layout_weight="1"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/filter_3"
                     app:layout_constraintEnd_toStartOf="@+id/filter_5"
+                    app:layout_constraintStart_toEndOf="@+id/filter_3"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:layout_editor_absoluteX="264dp" />
 
                 <Button
@@ -94,9 +94,9 @@
                     android:layout_height="76dp"
                     android:layout_weight="1"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/filter_4"
                     app:layout_constraintEnd_toStartOf="@+id/filter_6"
+                    app:layout_constraintStart_toEndOf="@+id/filter_4"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:layout_editor_absoluteX="352dp" />
 
                 <Button
@@ -107,8 +107,8 @@
                     android:layout_weight="1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/filter_5"/>
+                    app:layout_constraintStart_toEndOf="@+id/filter_5"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
