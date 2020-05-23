@@ -71,7 +71,7 @@
         android:layout_width="410dp"
         android:layout_height="440dp"
         android:contentDescription="TODO"
-        android:scaleType="centerCrop"
+        android:scaleType="center"
         android:src="@drawable/ic_image_black_24dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"

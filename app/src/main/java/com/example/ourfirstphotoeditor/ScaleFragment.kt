@@ -29,6 +29,8 @@ class ScaleFragment : Fragment() {
 
         if (Photo == null) {
            Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            val resizedBitmap =
+                Bitmap.createScaledBitmap(Photo!!, 410, 400, false)
         }
         textViewScale.text = "100% of image"
 
@@ -46,7 +48,7 @@ class ScaleFragment : Fragment() {
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 val trimmingTheEdges=trimmingTheEdgesPicture(Photo!!, 100-seekScale.progress)
-                val newBitmap= resizeBilinear(trimmingTheEdges, 100f/(100f-seekScale.progress))
+                val newBitmap= resizeBilinear(Photo!!, (100f-seekScale.progress)/100)
                 (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
             }
 
