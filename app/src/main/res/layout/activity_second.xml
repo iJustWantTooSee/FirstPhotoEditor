@@ -31,7 +31,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="2dp"
         android:background="@drawable/save_photo"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="@+id/buttonSave"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/buttonSave"
@@ -58,7 +57,6 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="2dp"
         android:background="@drawable/icon_back"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="@+id/backMainActivity"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/backMainActivity"
@@ -66,8 +64,8 @@
 
     <ImageView
         android:id="@+id/image_view"
-        android:layout_width="410dp"
-        android:layout_height="440dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:contentDescription="TODO"
         android:scaleType="center"
         android:src="@drawable/ic_image_black_24dp"
