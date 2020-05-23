@@ -13,7 +13,7 @@
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonSave"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="120dp"
         android:layout_height="76dp"
@@ -24,19 +24,18 @@
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <RelativeLayout
-        android:id="@+id/icon_conten1"
+        android:id="@+id/iconSave"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="2dp"
         android:background="@drawable/save_photo"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toEndOf="@+id/buttonSave"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button"
-        app:layout_constraintVertical_bias="0.535"
+        app:layout_constraintStart_toStartOf="@+id/buttonSave"
+        app:layout_constraintTop_toTopOf="@+id/guideline22"
         tools:ignore="DuplicateIds" />
 
     <Button
@@ -52,19 +51,18 @@
         app:layout_constraintVertical_bias="0.333" />
 
     <RelativeLayout
-        android:id="@+id/icon_hardwa"
+        android:id="@+id/iconBack"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="2dp"
         android:background="@drawable/icon_back"
-        app:layout_constraintBottom_toBottomOf="@+id/backMainActivity"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="@+id/backMainActivity"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/backMainActivity"
-        app:layout_constraintTop_toTopOf="@+id/backMainActivity"
-        app:layout_constraintVertical_bias="0.535" />
+        app:layout_constraintTop_toTopOf="@+id/guideline22" />
 
     <ImageView
         android:id="@+id/image_view"
@@ -75,8 +73,9 @@
         android:src="@drawable/ic_image_black_24dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+        app:layout_constraintTop_toTopOf="@+id/guideline23" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -112,7 +111,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RelativeLayout
-                        android:id="@+id/icon_image_1"
+                        android:id="@+id/iconRotate"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_alignParentLeft="true"
@@ -137,7 +136,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RelativeLayout
-                        android:id="@+id/icon_image_2"
+                        android:id="@+id/iconFilter"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_alignParentLeft="true"
@@ -164,23 +163,20 @@
                         app:layout_constraintEnd_toStartOf="@+id/scale"
                         app:layout_constraintStart_toEndOf="@+id/filters"
                         app:layout_constraintTop_toTopOf="parent" />
-
                     <RelativeLayout
-                        android:id="@+id/icon_action1"
+                        android:id="@+id/iconBright"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:background="@drawable/bright"
                         app:layout_constraintBottom_toBottomOf="@+id/bright"
-                        app:layout_constraintEnd_toEndOf="@+id/bright"
+                        app:layout_constraintEnd_toStartOf="@+id/scale"
                         app:layout_constraintStart_toEndOf="@+id/filters"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.428" >
-
-                    </RelativeLayout>
+                        app:layout_constraintTop_toTopOf="@+id/bright" />
 
                     <!--Button 4-->
+
                     <Button
                         android:id="@+id/scale"
                         style="@style/Widget.AppCompat.Button.Borderless"
@@ -193,8 +189,9 @@
                         app:layout_constraintStart_toEndOf="@+id/bright"
                         app:layout_constraintTop_toTopOf="parent" />
 
+
                     <RelativeLayout
-                        android:id="@+id/icon_action"
+                        android:id="@+id/iconCube"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_alignParentLeft="true"
@@ -222,7 +219,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RelativeLayout
-                        android:id="@+id/icon_maps_c"
+                        android:id="@+id/iconSegm"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_alignParentLeft="true"
@@ -247,7 +244,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RelativeLayout
-                        android:id="@+id/icon_conten3"
+                        android:id="@+id/iconInter"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_alignParentLeft="true"
@@ -272,7 +269,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RelativeLayout
-                        android:id="@+id/icon_conten"
+                        android:id="@+id/iconRetouch"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_alignParentLeft="true"
@@ -297,7 +294,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RelativeLayout
-                        android:id="@+id/icon_image_4"
+                        android:id="@+id/iconMask"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_alignParentLeft="true"
@@ -323,7 +320,7 @@
                         app:layout_constraintVertical_bias="1.0" />
 
                     <RelativeLayout
-                        android:id="@+id/icon_image_"
+                        android:id="@+id/iconBitri"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_alignParentLeft="true"
@@ -355,6 +352,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <LinearLayout
+        android:id="@+id/applyOrCancel"
         android:layout_width="match_parent"
         android:layout_height="76dp"
         android:orientation="horizontal"
@@ -363,6 +361,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fr_place">
 
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonCancel"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="205dp"
+                android:layout_height="76dp"
+                android:background="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RelativeLayout
+                android:id="@+id/iconCancel"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/cancel"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonCancel"
+                app:layout_constraintEnd_toEndOf="@+id/buttonCancel"
+                app:layout_constraintStart_toStartOf="@+id/buttonCancel"
+                app:layout_constraintTop_toTopOf="@+id/buttonCancel" />
+
+            <Button
+                android:id="@+id/buttonApply"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="205dp"
+                android:layout_height="76dp"
+                android:background="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RelativeLayout
+                android:id="@+id/iconApply"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/okay"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonApply"
+                app:layout_constraintEnd_toEndOf="@+id/buttonApply"
+                app:layout_constraintStart_toStartOf="@+id/buttonApply"
+                app:layout_constraintTop_toTopOf="@+id/buttonApply" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
@@ -421,6 +469,27 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.11" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.04103967" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1504788" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

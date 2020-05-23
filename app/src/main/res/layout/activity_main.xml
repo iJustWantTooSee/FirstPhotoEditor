@@ -63,7 +63,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/add_photo_a"
+        android:id="@+id/iconGallery"
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_centerHorizontal="true"
@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.473" />
 
     <Button
-        android:id="@+id/d_cube"
+        android:id="@+id/buttonCube"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="120dp"
         android:layout_height="80dp"
@@ -92,17 +92,17 @@
     <!-- strings.xml -->
 
     <RelativeLayout
-        android:id="@+id/icon_action"
+        android:id="@+id/iconCube"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/icon_action"
-        app:layout_constraintBottom_toBottomOf="@+id/d_cube"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonCube"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.789"
-        app:layout_constraintStart_toStartOf="@+id/d_cube"
-        app:layout_constraintTop_toTopOf="@+id/d_cube"
+        app:layout_constraintStart_toStartOf="@+id/buttonCube"
+        app:layout_constraintTop_toTopOf="@+id/buttonCube"
         app:layout_constraintVertical_bias="0.375" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -130,7 +130,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d_cube" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonCube" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
