@@ -8,10 +8,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
-import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_second.*
 import kotlinx.android.synthetic.main.fragment_filters.*
 import kotlin.math.min
@@ -37,27 +33,27 @@ class FiltersFragment : Fragment() {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
         }
 
-        filter_1.setOnClickListener {
+        filter1.setOnClickListener {
             val negativePicture=negativeFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(negativePicture)
         }
 
-        filter_2.setOnClickListener {
+        filter2.setOnClickListener {
             val blackAndWhitePicture=blackWhiteImageFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(blackAndWhitePicture)
         }
 
-        filter_3.setOnClickListener {
+        filter3.setOnClickListener {
             val grayScalePicture=grayscaleFilters(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(grayScalePicture)
         }
 
-        filter_4.setOnClickListener {
+        filter4.setOnClickListener {
             val sepiaPicture=sepiaFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(sepiaPicture)
         }
 
-        filter_5.setOnClickListener {
+        filter5.setOnClickListener {
             val contrastPicture=contrastFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(contrastPicture)
         }

@@ -3,6 +3,7 @@ package com.example.ourfirstphotoeditor
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_second.*
@@ -21,6 +22,9 @@ public class SecondActivity : AppCompatActivity() {
             var intent = Intent(SecondActivity@this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        applyOrCancel.visibility = View.INVISIBLE
+
 
         rotate.setOnClickListener(){
             replaceFragment(RotateFragment())

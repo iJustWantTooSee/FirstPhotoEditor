@@ -33,14 +33,14 @@ class RotateFragment : Fragment() {
         }
 
         seekRotate.progress=180
-        textViewAngle.text = "0°"
+        textViewRotate.text = "0°"
 
 
 
         seekRotate.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, b: Boolean) {
                 val temp = progress-180
-                textViewAngle.text = "$temp°"
+                textViewRotate.text = "$temp°"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
