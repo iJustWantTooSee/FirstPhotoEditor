@@ -153,8 +153,6 @@ class MainActivity : AppCompatActivity() {
         //called when image was captured from camera intent
         if (resultCode == Activity.RESULT_OK){
             //set image captured to image view
-           // image_view.setImageURI(image_uri)
-
             if (image_uri!=null){
                 var intent = Intent(MainActivity@this, SecondActivity::class.java)
                 intent.putExtra("imageUri", image_uri);
