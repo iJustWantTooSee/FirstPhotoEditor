@@ -48,8 +48,7 @@ class RotateFragment : Fragment() {
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                val compressedImage= Bitmap.createScaledBitmap(Photo!!, 720, 1280, false)
-                val newBitmap=rotatePicture(compressedImage,seekRotate.progress.toDouble()-180)
+                val newBitmap=rotatePicture(Photo!!,seekRotate.progress.toDouble()-180)
                 (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
             }
 
