@@ -33,7 +33,7 @@ class ScaleFragment : Fragment() {
                 Bitmap.createScaledBitmap(Photo!!, 410, 400, false)
         }
         textViewScale.text = "100% of image"
-
+        textViewZoom.text = "100% of image"
 
 
         seekScale.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -41,17 +41,23 @@ class ScaleFragment : Fragment() {
                 val temp = 100 + progress
                 textViewScale.text = "$temp% of image"
             }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar) {
-
-            }
-
+            override fun onStartTrackingTouch(seekBar: SeekBar) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 val trimmingTheEdges=trimmingTheEdgesPicture(Photo!!, 100-seekScale.progress)
                 val newBitmap= resizeBilinear(Photo!!, (100f-seekScale.progress)/100)
                 (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
             }
+        })
 
+        seekZoom.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                val temp = 1 + progress
+                textViewZoom.text = "$temp% of image"
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                TODO("Not yet implemented")
+            }
         })
 
     }
