@@ -33,6 +33,10 @@ class FiltersFragment : Fragment() {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
         }
 
+        filter0.setOnClickListener {
+            (activity as SecondActivity).image_view.setImageBitmap(Photo)
+        }
+
         filter1.setOnClickListener {
             val negativePicture=negativeFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(negativePicture)
@@ -58,7 +62,35 @@ class FiltersFragment : Fragment() {
             (activity as SecondActivity).image_view.setImageBitmap(contrastPicture)
         }
 
+        filter6.setOnClickListener {
+            val redPicture=redFilter(Photo!!)
+            (activity as SecondActivity).image_view.setImageBitmap(redPicture)
+        }
 
+        filter7.setOnClickListener {
+            val greenPicture=greenFilter(Photo!!)
+            (activity as SecondActivity).image_view.setImageBitmap(greenPicture)
+        }
+
+        filter8.setOnClickListener {
+            val bluePicture=blueFilter(Photo!!)
+            (activity as SecondActivity).image_view.setImageBitmap(bluePicture)
+        }
+
+        filter9.setOnClickListener {
+            val yellowPicture = yellowFilter(Photo!!)
+            (activity as SecondActivity).image_view.setImageBitmap(yellowPicture)
+        }
+
+        filter10.setOnClickListener {
+            val pinkPicture=pinkFilter(Photo!!)
+            (activity as SecondActivity).image_view.setImageBitmap(pinkPicture)
+        }
+
+        filter11.setOnClickListener {
+            val azurePicture=azureFilter(Photo!!)
+            (activity as SecondActivity).image_view.setImageBitmap(azurePicture)
+        }
     }
 
 
@@ -243,9 +275,158 @@ class FiltersFragment : Fragment() {
 
             }
         }
-
         return Bitmap.createBitmap(pixelsArray, width, height, Bitmap.Config.ARGB_8888)
-
     }
+
+    fun redFilter(originBitmap: Bitmap): Bitmap{
+        val width=originBitmap.width
+        val height=originBitmap.height
+
+        val pixelsArray = IntArray(width*height)
+        originBitmap.getPixels(pixelsArray, 0, width, 0, 0, width, height)
+        val temp=IntArray(width*height)
+
+        var blue: Int
+        var red: Int
+        var green: Int
+
+        for (y in 0 until height){
+            for (x in 0 until width)  {
+                red= Color.red(pixelsArray[y*width+x])
+                green=0
+                blue=0
+
+                temp[y*width+x]=Color.rgb(red,green,blue)
+            }
+        }
+
+        return Bitmap.createBitmap(temp, width, height, Bitmap.Config.ARGB_8888)
+    }
+
+    fun greenFilter(originBitmap: Bitmap): Bitmap{
+        val width=originBitmap.width
+        val height=originBitmap.height
+
+        val pixelsArray = IntArray(width*height)
+        originBitmap.getPixels(pixelsArray, 0, width, 0, 0, width, height)
+        val temp=IntArray(width*height)
+
+        var blue: Int
+        var red: Int
+        var green: Int
+
+        for (y in 0 until height){
+            for (x in 0 until width)  {
+                red= 0
+                green=Color.green(pixelsArray[y*width+x])
+                blue=0
+
+                temp[y*width+x]=Color.rgb(red,green,blue)
+            }
+        }
+
+        return Bitmap.createBitmap(temp, width, height, Bitmap.Config.ARGB_8888)
+    }
+
+    fun blueFilter(originBitmap: Bitmap): Bitmap {
+        val width=originBitmap.width
+        val height=originBitmap.height
+
+        val pixelsArray = IntArray(width*height)
+        originBitmap.getPixels(pixelsArray, 0, width, 0, 0, width, height)
+        val temp=IntArray(width*height)
+
+        var blue: Int
+        var red: Int
+        var green: Int
+
+        for (y in 0 until height){
+            for (x in 0 until width)  {
+                red= 0
+                green=0
+                blue=Color.blue(pixelsArray[y*width+x])
+
+                temp[y*width+x]=Color.rgb(red,green,blue)
+            }
+        }
+
+        return Bitmap.createBitmap(temp, width, height, Bitmap.Config.ARGB_8888)
+    }
+
+    fun yellowFilter(originBitmap: Bitmap):Bitmap{
+        val width=originBitmap.width
+        val height=originBitmap.height
+
+        val pixelsArray = IntArray(width*height)
+        originBitmap.getPixels(pixelsArray, 0, width, 0, 0, width, height)
+        val temp=IntArray(width*height)
+
+        var blue: Int
+        var red: Int
+        var green: Int
+
+        for (y in 0 until height){
+            for (x in 0 until width)  {
+                red= Color.red(pixelsArray[y*width+x])
+                green=Color.green(pixelsArray[y*width+x])
+                blue=0
+
+                temp[y*width+x]=Color.rgb(red,green,blue)
+            }
+        }
+
+        return Bitmap.createBitmap(temp, width, height, Bitmap.Config.ARGB_8888)
+    }
+
+    fun pinkFilter(originBitmap: Bitmap):Bitmap{
+        val width=originBitmap.width
+        val height=originBitmap.height
+
+        val pixelsArray = IntArray(width*height)
+        originBitmap.getPixels(pixelsArray, 0, width, 0, 0, width, height)
+        val temp=IntArray(width*height)
+
+        var blue: Int
+        var red: Int
+        var green: Int
+
+        for (y in 0 until height){
+            for (x in 0 until width)  {
+                red= Color.red(pixelsArray[y*width+x])
+                green=0
+                blue=Color.blue(pixelsArray[y*width+x])
+
+                temp[y*width+x]=Color.rgb(red,green,blue)
+            }
+        }
+
+        return Bitmap.createBitmap(temp, width, height, Bitmap.Config.ARGB_8888)
+    }
+
+    fun azureFilter(originBitmap: Bitmap):Bitmap{
+        val width=originBitmap.width
+        val height=originBitmap.height
+
+        val pixelsArray = IntArray(width*height)
+        originBitmap.getPixels(pixelsArray, 0, width, 0, 0, width, height)
+        val temp=IntArray(width*height)
+
+        var blue: Int
+        var red: Int
+        var green: Int
+
+        for (y in 0 until height){
+            for (x in 0 until width)  {
+                red= 0
+                green=Color.green(pixelsArray[y*width+x])
+                blue=Color.blue(pixelsArray[y*width+x])
+
+                temp[y*width+x]=Color.rgb(red,green,blue)
+            }
+        }
+
+        return Bitmap.createBitmap(temp, width, height, Bitmap.Config.ARGB_8888)
+    }
+
 
 }

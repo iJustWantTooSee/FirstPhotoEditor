@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(intent, GALLERY_REQUEST_CODE)
     }
 
-    fun checkCamera(){
+   private fun checkCamera(){
         //if system os is Marshmallow or Above, we need to request runtime permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             if (checkSelfPermission(Manifest.permission.CAMERA)

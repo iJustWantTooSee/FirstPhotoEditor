@@ -125,16 +125,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="76dp"
                     android:layout_weight="1"
+                    android:text="Red"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/filter5"
                     app:layout_constraintEnd_toEndOf="@id/filter7"
+                    app:layout_constraintStart_toEndOf="@+id/filter5"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <Button
                     android:id="@+id/filter7"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="76dp"
                     android:layout_weight="1"
+                    android:text="Green"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/filter8"
                     app:layout_constraintStart_toEndOf="@+id/filter6"
@@ -146,36 +149,43 @@
                     android:layout_width="wrap_content"
                     android:layout_height="76dp"
                     android:layout_weight="1"
+                    android:text="Blue"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/filter9"
                     app:layout_constraintStart_toEndOf="@+id/filter7"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <Button
                     android:id="@+id/filter9"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="76dp"
                     android:layout_weight="1"
+                    android:text="Yellow"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/filter10"
                     app:layout_constraintStart_toEndOf="@+id/filter8"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <Button
                     android:id="@+id/filter10"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="76dp"
                     android:layout_weight="1"
+                    android:text="Pink"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/filter11"
                     app:layout_constraintStart_toEndOf="@+id/filter9"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <Button
                     android:id="@+id/filter11"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="76dp"
                     android:layout_weight="1"
+                    android:text="Azure"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/filter12"
                     app:layout_constraintStart_toEndOf="@+id/filter10"

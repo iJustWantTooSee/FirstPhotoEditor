@@ -30,36 +30,46 @@ class ScaleFragment : Fragment() {
         if (Photo == null) {
            Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
         }
-        textViewScale.text = "100% of image"
-        textViewZoom.text = "100% of image"
+        textViewZoom.text = "image magnification 0%"
+        textViewScale.text = "image scale 100%"
 
 
-        seekScale.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        seekZoom.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, b: Boolean) {
-                val temp = 100 + progress
-                textViewScale.text = "$temp% of image"
+                val temp = progress
+                textViewZoom.text = "image magnification $temp%"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                val trimmingTheEdges=trimmingTheEdgesPicture(Photo!!, 100-seekScale.progress)
-                val newBitmap= resizeBilinear(Photo!!, (100f-seekScale.progress)/100)
+                val tempPhoto=checkNewPhoto()
+                val trimmingTheEdges=trimmingTheEdgesPicture(tempPhoto, 100-seekZoom.progress)
+                val newBitmap= resizeBilinear(trimmingTheEdges, 100/(100f-seekZoom.progress))
                 (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
             }
         })
 
-        seekZoom.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        seekScale.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                val temp = 1 + progress
-                textViewZoom.text = "$temp% of image"
+                val temp =1+ progress
+                textViewScale.text = "image scale $temp%"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+
+
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                TODO("Not yet implemented")
+                val tempPhoto=checkNewPhoto()
+                val newBitmap2= resizeBilinear(tempPhoto, (seekScale.progress.toFloat()/100))
+                (activity as SecondActivity).image_view.setImageBitmap(newBitmap2)
+
             }
         })
 
     }
 
+    private fun checkNewPhoto():Bitmap{
+        Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+        return Photo!!
+    }
 
     fun trimmingTheEdgesPicture(originBitmap:Bitmap, percent: Int): Bitmap{
         var w1= originBitmap!!.width
@@ -156,7 +166,6 @@ class ScaleFragment : Fragment() {
                         blue.toInt()
             }
         }
-
 
         return Bitmap.createBitmap(temp, w2, h2, Bitmap.Config.ARGB_8888)
     }
