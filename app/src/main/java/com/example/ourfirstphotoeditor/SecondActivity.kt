@@ -2,15 +2,20 @@ package com.example.ourfirstphotoeditor
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import java.text.SimpleDateFormat
 import kotlinx.android.synthetic.main.activity_second.*
+import java.io.IOException
+import java.util.*
 
 public class SecondActivity : AppCompatActivity() {
 
@@ -27,6 +32,12 @@ public class SecondActivity : AppCompatActivity() {
         backMainActivity.setOnClickListener {
             var intent = Intent(SecondActivity@this, MainActivity::class.java)
             startActivity(intent)
+        }
+
+        iconSave.setOnClickListener {
+            //сохранить изображение
+            val originBitmap=(image_view.getDrawable() as BitmapDrawable).bitmap
+            savingPhoto(originBitmap)
         }
 
         applyOrCancel.visibility = View.INVISIBLE
@@ -102,6 +113,18 @@ public class SecondActivity : AppCompatActivity() {
         }
 
        return bitmap
+    }
+
+    private fun savingPhoto(originBitmap:Bitmap){
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val imageFileName = "IMG_$timeStamp"
+
+        try {
+            MediaStore.Images.Media.insertImage(contentResolver, originBitmap, imageFileName, "Image of $title")
+            Toast.makeText(this, "The picture has been saved", Toast.LENGTH_SHORT).show()
+        } catch (e: IOException) {
+            Toast.makeText(this, "I'm sorry I messed up somewhere and your photo didn't survive. ", Toast.LENGTH_SHORT).show()
+        }
     }
 
     public fun replaceFragment(fragment: Fragment) {
