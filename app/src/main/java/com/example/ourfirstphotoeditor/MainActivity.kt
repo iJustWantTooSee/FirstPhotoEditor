@@ -163,8 +163,6 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             val uri = data!!.data
             try {
-               // val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
-               // img_view.setImageBitmap(bitmap)
                 if (uri!=null) {
                     var intent = Intent(MainActivity@ this, SecondActivity::class.java)
                     intent.putExtra("imageUri", uri);

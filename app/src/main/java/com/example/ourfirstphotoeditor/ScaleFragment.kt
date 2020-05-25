@@ -29,8 +29,6 @@ class ScaleFragment : Fragment() {
 
         if (Photo == null) {
            Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
-            val resizedBitmap =
-                Bitmap.createScaledBitmap(Photo!!, 410, 400, false)
         }
         textViewScale.text = "100% of image"
 
