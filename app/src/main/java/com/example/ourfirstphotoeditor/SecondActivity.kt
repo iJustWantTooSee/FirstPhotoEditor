@@ -25,6 +25,7 @@ public class SecondActivity : AppCompatActivity() {
 
         applyOrCancel.visibility = View.INVISIBLE
 
+        
 
         rotate.setOnClickListener(){
             replaceFragment(RotateFragment())

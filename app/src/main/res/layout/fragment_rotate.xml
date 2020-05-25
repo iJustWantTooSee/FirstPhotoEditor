@@ -11,7 +11,7 @@
 
     <SeekBar
         android:id="@+id/seekRotate"
-        android:layout_width="380dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
 
         android:max="360"
