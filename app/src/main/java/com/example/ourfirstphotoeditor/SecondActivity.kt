@@ -9,8 +9,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.app.Dialog
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import java.text.SimpleDateFormat
@@ -78,6 +80,36 @@ public class SecondActivity : AppCompatActivity(), changeInterface {
 
         buttons = arrayOf(rotate, filters, bright, scale, segm, inter, retouch, mask, bitri)
 
+        backMainActivity.setOnClickListener{
+            val builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(this)
+            builder.setTitle("Are you sure want to exit?")
+                .setMessage("If you leave your result will not be saved.")
+                .setCancelable(true)
+            builder.setPositiveButton("Ok"){
+                dialog, which ->
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            builder.setNegativeButton("Cancel"){
+                dialog, which -> dialog.cancel()
+            }
+            builder.create().show()
+        }
+        buttonSave.setOnClickListener{
+            val builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(this)
+            //Save image?
+            builder.setTitle("Do u wanna save diz?")
+                .setCancelable(true)
+            builder.setPositiveButton("Ok"){
+                    dialog, which ->
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            builder.setNegativeButton("Cancel"){
+                    dialog, which -> dialog.cancel()
+            }
+            builder.create().show()
+        }
     }
 
     fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {

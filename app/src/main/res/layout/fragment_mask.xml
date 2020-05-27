@@ -51,11 +51,14 @@
         android:id="@+id/textViewAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="106dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/guideline26"
+        app:layout_constraintEnd_toEndOf="@+id/seekAmount"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline25"
-        app:layout_constraintTop_toBottomOf="@+id/seekAmount" />
+        app:layout_constraintStart_toStartOf="@+id/seekAmount"
+        app:layout_constraintTop_toTopOf="@+id/seekAmount" />
 
     <SeekBar
         android:id="@+id/seekRadius"
@@ -67,18 +70,18 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline26"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline25"
-        app:layout_constraintTop_toTopOf="@+id/textViewAmount"
-        app:layout_constraintVertical_bias="0.503" />
+        app:layout_constraintTop_toBottomOf="@+id/seekAmount" />
 
     <TextView
         android:id="@+id/textViewRadius"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/guideline26"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="@+id/seekRadius"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/guideline25"
-        app:layout_constraintTop_toBottomOf="@+id/seekRadius" />
+        app:layout_constraintTop_toTopOf="@+id/seekRadius" />
 
     <SeekBar
         android:id="@+id/seekThreshold"
@@ -96,18 +99,19 @@
         android:id="@+id/textViewThreshold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/guideline26"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline25"
-        app:layout_constraintTop_toBottomOf="@+id/seekThreshold" />
+        app:layout_constraintEnd_toEndOf="@+id/seekThreshold"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/seekThreshold"
+        app:layout_constraintTop_toTopOf="@+id/seekThreshold" />
 
     <Button
         android:id="@+id/button"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Okey"
+        android:text="Go "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline26"
         app:layout_constraintTop_toTopOf="parent" />

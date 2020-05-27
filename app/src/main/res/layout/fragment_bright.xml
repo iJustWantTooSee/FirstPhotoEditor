@@ -13,12 +13,10 @@
         android:id="@+id/seekBright"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-
         android:max="300"
         android:min="0"
         android:progress="100"
         android:progressTint="#ffffff"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline20"
         app:layout_constraintStart_toStartOf="@+id/guideline21"

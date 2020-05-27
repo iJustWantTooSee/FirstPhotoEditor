@@ -82,8 +82,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <HorizontalScrollView
             android:layout_width="wrap_content"
@@ -163,6 +163,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/scale"
                         app:layout_constraintStart_toEndOf="@+id/filters"
                         app:layout_constraintTop_toTopOf="parent" />
+
                     <RelativeLayout
                         android:id="@+id/iconBright"
                         android:layout_width="48dp"
@@ -201,7 +202,7 @@
                         app:layout_constraintEnd_toEndOf="@+id/scale"
                         app:layout_constraintStart_toEndOf="@+id/bright"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.571" >
+                        app:layout_constraintVertical_bias="0.571">
 
                     </RelativeLayout>
 
@@ -345,11 +346,11 @@
         android:name="com.example.ourfirstphotoeditor.PlaceFragment"
         android:layout_width="418dp"
         android:layout_height="90dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/applyOrCancel"
@@ -358,8 +359,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fr_place">
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -369,10 +369,11 @@
             <Button
                 android:id="@+id/buttonCancel"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="205dp"
-                android:layout_height="76dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:background="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/buttonApply"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -391,11 +392,12 @@
             <Button
                 android:id="@+id/buttonApply"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="205dp"
-                android:layout_height="76dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:background="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonCancel"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <RelativeLayout

@@ -34,22 +34,15 @@ class BrightFragment : Fragment() {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
         }
 
-
         seekBright.progress=100
         textViewBright.text = "100% brightness"
-
-
 
         seekBright.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, b: Boolean) {
                 val temp = progress
                 textViewBright.text = "$temp% brightness"
             }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar) {
-
-            }
-
+            override fun onStartTrackingTouch(seekBar: SeekBar) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 val newBrightnessImage=changesImageBrightness(Photo!!, seekBright.progress.toDouble()/100)
                 (activity as SecondActivity).image_view.setImageBitmap(newBrightnessImage)
