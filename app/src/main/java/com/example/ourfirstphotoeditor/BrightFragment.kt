@@ -34,6 +34,7 @@ class BrightFragment : Fragment() {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
         }
 
+
         seekBright.progress=100
         textViewBright.text = "100% brightness"
 
@@ -52,13 +53,30 @@ class BrightFragment : Fragment() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 val newBrightnessImage=changesImageBrightness(Photo!!, seekBright.progress.toDouble()/100)
                 (activity as SecondActivity).image_view.setImageBitmap(newBrightnessImage)
+                checkingResultSaved()
             }
 
         })
 
     }
 
+    private fun checkingResultSaved(){
+        (activity as SecondActivity).applyOrCancel.visibility=View.VISIBLE
 
+
+        (activity as SecondActivity).buttonCancel.setOnClickListener {
+            (activity as SecondActivity).image_view.setImageBitmap(FiltersFragment.Photo!!)
+            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+            seekBright.progress=100
+        }
+
+        (activity as SecondActivity).buttonApply.setOnClickListener {
+            FiltersFragment.Photo =((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            (activity as SecondActivity).image_view.setImageBitmap(FiltersFragment.Photo!!)
+            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+            seekBright.progress=100
+        }
+    }
 
     ///----------------------------------Яркость--------------------------------------\\
     fun changesImageBrightness(originBitmap: Bitmap, k:Double):Bitmap{
