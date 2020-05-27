@@ -17,7 +17,7 @@ import kotlin.math.min
 
 
 class BrightFragment : Fragment() {
-    var Photo: Bitmap? = null
+   private var Photo: Bitmap? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
