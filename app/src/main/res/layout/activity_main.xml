@@ -75,6 +75,9 @@
         app:layout_constraintTop_toTopOf="@+id/takeFromGalleryButton"
         app:layout_constraintVertical_bias="0.473" />
 
+
+    <!-- strings.xml -->
+
     <Button
         android:id="@+id/buttonCube"
         style="@style/Widget.AppCompat.Button.Borderless"
@@ -82,14 +85,11 @@
         android:layout_height="80dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:background="#01000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <!-- strings.xml -->
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toTopOf="@+id/guideline23" />
 
     <RelativeLayout
         android:id="@+id/iconCube"
@@ -145,6 +145,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

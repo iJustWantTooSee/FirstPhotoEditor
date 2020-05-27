@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -17,8 +18,13 @@ import kotlinx.android.synthetic.main.activity_second.*
 import java.io.IOException
 import java.util.*
 
-public class SecondActivity : AppCompatActivity() {
+interface changeInterface{
+    fun stateOfApplyOrCancel(boolean: Boolean)
+    fun stateOfApplyOrCancelButtons(boolean: Boolean)
+}
+public class SecondActivity : AppCompatActivity(), changeInterface {
 
+    lateinit var buttons: Array<Button>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +47,6 @@ public class SecondActivity : AppCompatActivity() {
         }
 
         applyOrCancel.visibility = View.INVISIBLE
-
 
         rotate.setOnClickListener(){
             replaceFragment(RotateFragment())
@@ -70,6 +75,9 @@ public class SecondActivity : AppCompatActivity() {
         bitri.setOnClickListener(){
             replaceFragment(BiTriFiltrationFragment())
         }
+
+        buttons = arrayOf(rotate, filters, bright, scale, segm, inter, retouch, mask, bitri)
+
     }
 
     fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {
@@ -131,6 +139,21 @@ public class SecondActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fr_place, fragment)
         transaction.commit()
+    }
+
+    override fun stateOfApplyOrCancel(boolean: Boolean) {
+        if (boolean)
+        {
+            applyOrCancel.visibility = View.VISIBLE
+        } else
+        {
+            applyOrCancel.visibility = View.INVISIBLE
+        }
+    }
+    override fun stateOfApplyOrCancelButtons(boolean: Boolean) {
+        for (i in 0 until applyOrCancel.childCount) {
+            applyOrCancel.getChildAt(i).isEnabled = boolean
+        }
     }
 
 }

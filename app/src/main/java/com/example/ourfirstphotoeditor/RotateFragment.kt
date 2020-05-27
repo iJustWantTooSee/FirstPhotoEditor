@@ -53,6 +53,15 @@ class RotateFragment : Fragment() {
             }
 
         })
+        buttonRotateLeft90.setOnClickListener() {
+
+        }
+        buttonZero.setOnClickListener(){
+
+        }
+        buttonRotateRight90.setOnClickListener() {
+
+        }
 
     }
 

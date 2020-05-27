@@ -14,15 +14,15 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
 
+        android:layout_marginBottom="24dp"
         android:max="360"
         android:progress="180"
-        android:progressTint="#ffffff"
 
+        android:progressTint="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline16"
+        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -51,37 +51,81 @@
         app:layout_constraintGuide_percent="0.9659367" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonRotateLeft90"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.42" />
+        app:layout_constraintTop_toTopOf="@+id/guideline30" />
+
+    <RelativeLayout
+        android:id="@+id/iconRotateLeft90"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/rotate_left"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonRotateLeft90"
+        app:layout_constraintEnd_toEndOf="@+id/buttonRotateLeft90"
+        app:layout_constraintStart_toStartOf="@+id/buttonRotateLeft90"
+        app:layout_constraintTop_toTopOf="@+id/buttonRotateLeft90" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonZero"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.42" />
+        android:text="0°"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonRotateRight90"
+        app:layout_constraintStart_toEndOf="@+id/buttonRotateLeft90"
+        app:layout_constraintTop_toTopOf="@+id/guideline30" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonRotateRight90"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline16"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.42" />
+        app:layout_constraintTop_toTopOf="@+id/guideline30" />
+    <RelativeLayout
+        android:id="@+id/iconRotateRight90"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/rotate_right"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonRotateRight90"
+        app:layout_constraintEnd_toEndOf="@+id/buttonRotateRight90"
+        app:layout_constraintStart_toStartOf="@+id/buttonRotateRight90"
+        app:layout_constraintTop_toTopOf="@+id/buttonRotateRight90" />
+
+    <TextView
+        android:id="@+id/textViewLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-90°"
+        app:layout_constraintEnd_toStartOf="@+id/guideline16"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="@+id/guideline15"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRotateLeft90" />
+
+    <TextView
+        android:id="@+id/textViewRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="+90°"
+        app:layout_constraintEnd_toStartOf="@+id/guideline16"
+        app:layout_constraintHorizontal_bias="0.964"
+        app:layout_constraintStart_toStartOf="@+id/guideline15"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRotateRight90" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
