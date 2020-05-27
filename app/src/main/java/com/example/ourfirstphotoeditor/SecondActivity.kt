@@ -26,7 +26,7 @@ public class SecondActivity : AppCompatActivity() {
         val uri: Uri = intent.getParcelableExtra("imageUri")
         if (uri!=null) {
 
-            val compressedImage=decodeSampledBitmapFromResource(uri, 768, 1024, this)
+            val compressedImage=decodeSampledBitmapFromResource(uri, 1224, 1624, this)
             image_view.setImageBitmap(compressedImage)
         }
         backMainActivity.setOnClickListener {
@@ -79,8 +79,8 @@ public class SecondActivity : AppCompatActivity() {
 
         if (height > reqHeight || width > reqWidth) {
 
-            val halfHeight: Int = height / 2
-            val halfWidth: Int = width / 2
+            val halfHeight: Int = height
+            val halfWidth: Int = width
 
             // Calculate the largest inSampleSize value that is a power of 2 and keeps both
             // height and width larger than the requested height and width.
@@ -114,6 +114,7 @@ public class SecondActivity : AppCompatActivity() {
 
        return bitmap
     }
+
 
     private fun savingPhoto(originBitmap:Bitmap){
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())

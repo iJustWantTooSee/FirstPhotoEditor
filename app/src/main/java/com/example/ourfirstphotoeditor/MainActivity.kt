@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         var chCamera:Boolean=false
         var chGallery:Boolean=false
     }
-    lateinit var currentPhotoPath: String
 
 
 

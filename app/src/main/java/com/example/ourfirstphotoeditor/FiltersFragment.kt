@@ -8,13 +8,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.HorizontalScrollView
+import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_second.*
 import kotlinx.android.synthetic.main.fragment_filters.*
 import kotlin.math.min
 
 class FiltersFragment : Fragment() {
 
-    var Photo: Bitmap? = null
+    companion object{
+        var Photo: Bitmap? = null
+        var firstImage: Boolean =true
+        var firstImageBitmap: Bitmap? = null
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,73 +31,108 @@ class FiltersFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_filters, container, false)
     }
 
+
+    private fun checkingResultSaved(){
+        (activity as SecondActivity).applyOrCancel.visibility=View.VISIBLE
+
+
+        (activity as SecondActivity).buttonCancel.setOnClickListener {
+            (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
+            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+        }
+
+        (activity as SecondActivity).buttonApply.setOnClickListener {
+            Photo=((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
+            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
 
-
         if (Photo == null) {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            if (firstImage){
+                firstImageBitmap= Photo
+                firstImage=false
+            }
         }
 
         filter0.setOnClickListener {
-            (activity as SecondActivity).image_view.setImageBitmap(Photo)
+            (activity as SecondActivity).image_view.setImageBitmap(firstImageBitmap)
+            checkingResultSaved()
         }
 
         filter1.setOnClickListener {
             val negativePicture=negativeFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(negativePicture)
+            checkingResultSaved()
         }
 
         filter2.setOnClickListener {
             val blackAndWhitePicture=blackWhiteImageFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(blackAndWhitePicture)
+            checkingResultSaved()
         }
 
         filter3.setOnClickListener {
             val grayScalePicture=grayscaleFilters(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(grayScalePicture)
+            checkingResultSaved()
         }
 
         filter4.setOnClickListener {
             val sepiaPicture=sepiaFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(sepiaPicture)
+            checkingResultSaved()
         }
 
         filter5.setOnClickListener {
             val contrastPicture=contrastFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(contrastPicture)
+            checkingResultSaved()
         }
 
         filter6.setOnClickListener {
             val redPicture=redFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(redPicture)
+            checkingResultSaved()
         }
 
         filter7.setOnClickListener {
             val greenPicture=greenFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(greenPicture)
+            checkingResultSaved()
         }
 
         filter8.setOnClickListener {
             val bluePicture=blueFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(bluePicture)
+            checkingResultSaved()
         }
 
         filter9.setOnClickListener {
             val yellowPicture = yellowFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(yellowPicture)
+            checkingResultSaved()
         }
 
         filter10.setOnClickListener {
             val pinkPicture=pinkFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(pinkPicture)
+            checkingResultSaved()
         }
 
         filter11.setOnClickListener {
             val azurePicture=azureFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(azurePicture)
+            checkingResultSaved()
         }
+
+
+
     }
 
 
@@ -99,7 +141,7 @@ class FiltersFragment : Fragment() {
 
     // ----------------------------------Фильтры------------------------------------\\
 
-   private fun negativeFilter(originBitmap: Bitmap):Bitmap{
+    private fun negativeFilter(originBitmap: Bitmap):Bitmap{
         val width=originBitmap.width
         val height=originBitmap.height
 
@@ -278,7 +320,7 @@ class FiltersFragment : Fragment() {
         return Bitmap.createBitmap(pixelsArray, width, height, Bitmap.Config.ARGB_8888)
     }
 
-    fun redFilter(originBitmap: Bitmap): Bitmap{
+    private fun redFilter(originBitmap: Bitmap): Bitmap{
         val width=originBitmap.width
         val height=originBitmap.height
 
@@ -303,7 +345,7 @@ class FiltersFragment : Fragment() {
         return Bitmap.createBitmap(temp, width, height, Bitmap.Config.ARGB_8888)
     }
 
-    fun greenFilter(originBitmap: Bitmap): Bitmap{
+    private fun greenFilter(originBitmap: Bitmap): Bitmap{
         val width=originBitmap.width
         val height=originBitmap.height
 
@@ -328,7 +370,7 @@ class FiltersFragment : Fragment() {
         return Bitmap.createBitmap(temp, width, height, Bitmap.Config.ARGB_8888)
     }
 
-    fun blueFilter(originBitmap: Bitmap): Bitmap {
+    private fun blueFilter(originBitmap: Bitmap): Bitmap {
         val width=originBitmap.width
         val height=originBitmap.height
 
@@ -353,7 +395,7 @@ class FiltersFragment : Fragment() {
         return Bitmap.createBitmap(temp, width, height, Bitmap.Config.ARGB_8888)
     }
 
-    fun yellowFilter(originBitmap: Bitmap):Bitmap{
+    private fun yellowFilter(originBitmap: Bitmap):Bitmap{
         val width=originBitmap.width
         val height=originBitmap.height
 
@@ -378,7 +420,7 @@ class FiltersFragment : Fragment() {
         return Bitmap.createBitmap(temp, width, height, Bitmap.Config.ARGB_8888)
     }
 
-    fun pinkFilter(originBitmap: Bitmap):Bitmap{
+    private fun pinkFilter(originBitmap: Bitmap):Bitmap{
         val width=originBitmap.width
         val height=originBitmap.height
 
@@ -392,9 +434,12 @@ class FiltersFragment : Fragment() {
 
         for (y in 0 until height){
             for (x in 0 until width)  {
-                red= Color.red(pixelsArray[y*width+x])
+                red= (Color.red(pixelsArray[y*width+x]) *0.9).toInt()
                 green=0
-                blue=Color.blue(pixelsArray[y*width+x])
+                blue=(Color.blue(pixelsArray[y*width+x])*1.2).toInt()
+                if (blue>255){
+                    blue=255
+                }
 
                 temp[y*width+x]=Color.rgb(red,green,blue)
             }
@@ -403,7 +448,7 @@ class FiltersFragment : Fragment() {
         return Bitmap.createBitmap(temp, width, height, Bitmap.Config.ARGB_8888)
     }
 
-    fun azureFilter(originBitmap: Bitmap):Bitmap{
+    private fun azureFilter(originBitmap: Bitmap):Bitmap{
         val width=originBitmap.width
         val height=originBitmap.height
 
