@@ -10,7 +10,9 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.app.Dialog
+import android.provider.ContactsContract
 import android.widget.Button
+import org.jetbrains.anko.toast
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -42,7 +44,7 @@ public class SecondActivity : AppCompatActivity(), changeInterface {
             startActivity(intent)
         }
 
-        iconSave.setOnClickListener {
+        buttonSave.setOnClickListener {
             //сохранить изображение
             val originBitmap=(image_view.getDrawable() as BitmapDrawable).bitmap
             savingPhoto(originBitmap)
@@ -82,15 +84,16 @@ public class SecondActivity : AppCompatActivity(), changeInterface {
 
         backMainActivity.setOnClickListener{
             val builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(this)
-            builder.setTitle("Are you sure want to exit?")
-                .setMessage("If you leave your result will not be saved.")
+            builder.setTitle("Are you sure want to exit to the open space?")
+                .setMessage("You are head may blow up.")
+                    //If you leave your result will not be saved.
                 .setCancelable(true)
-            builder.setPositiveButton("Ok"){
+            builder.setPositiveButton("Yup"){
                 dialog, which ->
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
-            builder.setNegativeButton("Cancel"){
+            builder.setNegativeButton("Nope"){
                 dialog, which -> dialog.cancel()
             }
             builder.create().show()
@@ -100,12 +103,11 @@ public class SecondActivity : AppCompatActivity(), changeInterface {
             //Save image?
             builder.setTitle("Do u wanna save diz?")
                 .setCancelable(true)
-            builder.setPositiveButton("Ok"){
+            builder.setPositiveButton("Yup"){
                     dialog, which ->
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                savingPhoto((image_view.drawable as BitmapDrawable).bitmap)
             }
-            builder.setNegativeButton("Cancel"){
+            builder.setNegativeButton("Nope"){
                     dialog, which -> dialog.cancel()
             }
             builder.create().show()
@@ -162,9 +164,11 @@ public class SecondActivity : AppCompatActivity(), changeInterface {
 
         try {
             MediaStore.Images.Media.insertImage(contentResolver, originBitmap, imageFileName, "Image of $title")
-            Toast.makeText(this, "The picture has been saved", Toast.LENGTH_SHORT).show()
+    //        Toast.makeText(this, "The picture has been saved", Toast.LENGTH_SHORT).show()
+            toast("The picture has been saved")
         } catch (e: IOException) {
-            Toast.makeText(this, "I'm sorry I messed up somewhere and your photo didn't survive. ", Toast.LENGTH_SHORT).show()
+     //       Toast.makeText(this, "I'm sorry I messed up somewhere and your photo didn't survive. ", Toast.LENGTH_SHORT).show()
+            toast("I'm sorry I messed up somewhere and your photo didn't survive.")
         }
     }
 
