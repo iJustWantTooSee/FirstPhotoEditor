@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         buttonCube.setOnClickListener {
 
-            Toast.makeText(this@MainActivity, "Здесь будет кубик, отвечаю", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@MainActivity, getString(R.string.cube), Toast.LENGTH_LONG).show()
         }
 
         cameraButton.setOnClickListener {
@@ -141,7 +141,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 else{
                     //permission from popup was denied
-                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.permDen), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -168,7 +168,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 else{
-                    Toast.makeText(this, "Please select a photo", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.photoSelect), Toast.LENGTH_SHORT).show()
                 }
             } catch (e: IOException) {
                 e.printStackTrace()
