@@ -201,6 +201,162 @@
                     app:layout_constraintStart_toEndOf="@+id/filter11"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <ImageView
+                    android:id="@+id/imageViewFilter0"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter0"
+                    app:layout_constraintEnd_toEndOf="@+id/filter0"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter0"
+                    app:layout_constraintTop_toTopOf="@+id/filter0"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
+                    android:id="@+id/imageViewFilter1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter1"
+                    app:layout_constraintEnd_toEndOf="@+id/filter1"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter1"
+                    app:layout_constraintTop_toTopOf="@+id/filter1"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
+                    android:id="@+id/imageViewFilter2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter2"
+                    app:layout_constraintEnd_toEndOf="@+id/filter2"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter2"
+                    app:layout_constraintTop_toTopOf="@+id/filter2"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
+                    android:id="@+id/imageViewFilter3"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter3"
+                    app:layout_constraintEnd_toEndOf="@+id/filter3"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter3"
+                    app:layout_constraintTop_toTopOf="@+id/filter3"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
+                    android:id="@+id/imageViewFilter4"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter4"
+                    app:layout_constraintEnd_toEndOf="@+id/filter4"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter4"
+                    app:layout_constraintTop_toTopOf="@+id/filter4"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
+                    android:id="@+id/imageViewFilter5"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter5"
+                    app:layout_constraintEnd_toEndOf="@+id/filter5"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter5"
+                    app:layout_constraintTop_toTopOf="@+id/filter5"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
+                    android:id="@+id/imageViewFilter6"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter6"
+                    app:layout_constraintEnd_toEndOf="@+id/filter6"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter6"
+                    app:layout_constraintTop_toTopOf="@+id/filter6"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
+                    android:id="@+id/imageViewFilter7"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter7"
+                    app:layout_constraintEnd_toEndOf="@+id/filter7"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter7"
+                    app:layout_constraintTop_toTopOf="@+id/filter7"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
+                    android:id="@+id/imageViewFilter8"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter8"
+                    app:layout_constraintEnd_toEndOf="@+id/filter8"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter8"
+                    app:layout_constraintTop_toTopOf="@+id/filter8"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
+                    android:id="@+id/imageViewFilter9"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter9"
+                    app:layout_constraintEnd_toEndOf="@+id/filter9"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter9"
+                    app:layout_constraintTop_toTopOf="@+id/filter9"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
+                    android:id="@+id/imageViewFilter10"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter10"
+                    app:layout_constraintEnd_toEndOf="@+id/filter10"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter10"
+                    app:layout_constraintTop_toTopOf="@+id/filter10"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
+                    android:id="@+id/imageViewFilter11"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter11"
+                    app:layout_constraintEnd_toEndOf="@+id/filter11"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter11"
+                    app:layout_constraintTop_toTopOf="@+id/filter11"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
+                    android:id="@+id/imageViewFilter12"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter12"
+                    app:layout_constraintEnd_toEndOf="@+id/filter12"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter12"
+                    app:layout_constraintTop_toTopOf="@+id/filter12"
+                    app:layout_constraintVertical_bias="0.5" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
