@@ -165,10 +165,8 @@ public class SecondActivity : AppCompatActivity(), changeInterface {
         try {
             MediaStore.Images.Media.insertImage(contentResolver, originBitmap, imageFileName, "Image of $title")
             Toast.makeText(this, getString(R.string.saved), Toast.LENGTH_SHORT).show()
-                //       toast("The picture has been saved")
         } catch (e: IOException) {
             Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT).show()
-     //       toast("I'm sorry I messed up somewhere and your photo didn't survive.")
         }
     }
 
