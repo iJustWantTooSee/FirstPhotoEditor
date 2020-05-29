@@ -12,12 +12,15 @@ import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_second.*
 import kotlinx.android.synthetic.main.fragment_filters.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import kotlin.math.min
 
 class FiltersFragment : Fragment() {
 
     companion object{
         var Photo: Bitmap? = null
+        var thumbnailImage: Bitmap? = null
         var firstImage: Boolean =true
         var firstImageBitmap: Bitmap? = null
     }
@@ -44,6 +47,8 @@ class FiltersFragment : Fragment() {
         (activity as SecondActivity).buttonApply.setOnClickListener {
             Photo=((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
             (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
+            thumbnailImage = Bitmap.createScaledBitmap(Photo!!, 150, 150, false)
+            imagePreview(thumbnailImage!!)
             (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
         }
     }
@@ -56,10 +61,12 @@ class FiltersFragment : Fragment() {
         firstImage = true
         if (Photo == null) {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            thumbnailImage = Bitmap.createScaledBitmap(Photo!!, 150, 150, false)
             if (firstImage){
                 firstImageBitmap= Photo
                 firstImage=false
             }
+            imagePreview(thumbnailImage!!)
         }
 
         filter0.setOnClickListener {
@@ -137,7 +144,19 @@ class FiltersFragment : Fragment() {
 
     }
 
+    private fun imagePreview(bitmapPreview: Bitmap){
+        imageViewFilter0.setImageBitmap(firstImageBitmap)
+        imageViewFilter1.setImageBitmap(negativeFilter(bitmapPreview))
+        imageViewFilter3.setImageBitmap(grayscaleFilters(bitmapPreview))
+        imageViewFilter4.setImageBitmap(sepiaFilter(bitmapPreview))
+        imageViewFilter6.setImageBitmap(redFilter(bitmapPreview))
+        imageViewFilter7.setImageBitmap(greenFilter(bitmapPreview))
+        imageViewFilter8.setImageBitmap(blueFilter(bitmapPreview))
+        imageViewFilter9.setImageBitmap(yellowFilter(bitmapPreview))
+        imageViewFilter10.setImageBitmap(pinkFilter(bitmapPreview))
+        imageViewFilter11.setImageBitmap(azureFilter(bitmapPreview))
 
+    }
 
 
 

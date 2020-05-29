@@ -22,7 +22,7 @@ class MaskFragment : Fragment() {
 
     }
 
-    var Photo: Bitmap? = null
+   private var Photo: Bitmap? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

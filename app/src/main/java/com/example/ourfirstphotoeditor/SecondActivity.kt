@@ -36,7 +36,7 @@ public class SecondActivity : AppCompatActivity(), changeInterface {
         val uri: Uri = intent.getParcelableExtra("imageUri")
         if (uri!=null) {
 
-            val compressedImage=decodeSampledBitmapFromResource(uri, 1224, 1624, this)
+            val compressedImage=decodeSampledBitmapFromResource(uri, 1024, 1024, this)
             image_view.setImageBitmap(compressedImage)
         }
         backMainActivity.setOnClickListener {
