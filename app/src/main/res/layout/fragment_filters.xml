@@ -187,19 +187,10 @@
                     android:layout_weight="1"
                     android:text="Azure"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/filter12"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/filter10"
                     app:layout_constraintTop_toTopOf="parent" />
-                <Button
-                    android:id="@+id/filter12"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="wrap_content"
-                    android:layout_height="76dp"
-                    android:layout_weight="1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/filter11"
-                    app:layout_constraintTop_toTopOf="parent" />
+
 
                 <ImageView
                     android:id="@+id/imageViewFilter0"
@@ -343,18 +334,6 @@
                     app:layout_constraintHorizontal_bias="0.586"
                     app:layout_constraintStart_toStartOf="@+id/filter11"
                     app:layout_constraintTop_toTopOf="@+id/filter11"
-                    app:layout_constraintVertical_bias="0.5" />
-
-                <ImageView
-                    android:id="@+id/imageViewFilter12"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:src="@drawable/ic_launcher_background"
-                    app:layout_constraintBottom_toBottomOf="@+id/filter12"
-                    app:layout_constraintEnd_toEndOf="@+id/filter12"
-                    app:layout_constraintHorizontal_bias="0.586"
-                    app:layout_constraintStart_toStartOf="@+id/filter12"
-                    app:layout_constraintTop_toTopOf="@+id/filter12"
                     app:layout_constraintVertical_bias="0.5" />
 
 
