@@ -16,4 +16,11 @@
     <string name="permDen">Permission denied</string>
     <string name="photoSelect">Please select a photo</string>
 
+//messages
+    <string name="save">Do u wanna save diz?</string>
+    <string name="yes">Yup</string>
+    <string name="no">Nope</string>
+    <string name="exitTitle">Are you really want to exit to the open space?</string>
+    <string name="exitMessage">Your head may blow up!</string>
+
 </resources>

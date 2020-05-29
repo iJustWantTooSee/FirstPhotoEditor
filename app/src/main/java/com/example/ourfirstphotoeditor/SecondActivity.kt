@@ -84,16 +84,16 @@ public class SecondActivity : AppCompatActivity(), changeInterface {
 
         backMainActivity.setOnClickListener{
             val builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(this)
-            builder.setTitle("Are you sure want to exit to the open space?")
-                .setMessage("You are head may blow up.")
+            builder.setTitle(getString(R.string.exitTitle))
+                .setMessage(getString(R.string.exitMessage))
                     //If you leave your result will not be saved.
                 .setCancelable(true)
-            builder.setPositiveButton("Yup"){
+            builder.setPositiveButton(getString(R.string.yes)){
                 dialog, which ->
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
-            builder.setNegativeButton("Nope"){
+            builder.setNegativeButton(getString(R.string.no)){
                 dialog, which -> dialog.cancel()
             }
             builder.create().show()
@@ -101,13 +101,13 @@ public class SecondActivity : AppCompatActivity(), changeInterface {
         buttonSave.setOnClickListener{
             val builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(this)
             //Save image?
-            builder.setTitle("Do u wanna save diz?")
+            builder.setTitle(getString(R.string.save))
                 .setCancelable(true)
-            builder.setPositiveButton("Yup"){
+            builder.setPositiveButton(getString(R.string.yes)){
                     dialog, which ->
                 savingPhoto((image_view.drawable as BitmapDrawable).bitmap)
             }
-            builder.setNegativeButton("Nope"){
+            builder.setNegativeButton(getString(R.string.no)){
                     dialog, which -> dialog.cancel()
             }
             builder.create().show()
