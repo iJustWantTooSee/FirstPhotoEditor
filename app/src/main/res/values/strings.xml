@@ -3,20 +3,20 @@
     <string name="app_name">ImChange</string>
     <string name="button">Button</string>
 
-//mainActivityText
+    //mainActivityText
     <string name="you_look_ni">You look nice today</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-//toasts
+    //toasts
     <string name="saved">The picture has been saved</string>
     <string name="error">I\'m so sorry, I messed up somewhere and your photo didn\'t survive</string>
     <string name="cube">Здесь будет кубик, отвечаю</string>
     <string name="permDen">Permission denied</string>
     <string name="photoSelect">Please select a photo</string>
 
-//messages
+    //messages
     <string name="save">Do u wanna save diz?</string>
     <string name="yes">Yup</string>
     <string name="no">Nope</string>

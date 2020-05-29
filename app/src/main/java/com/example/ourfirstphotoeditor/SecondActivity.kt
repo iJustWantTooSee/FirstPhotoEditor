@@ -9,12 +9,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
-import android.app.Dialog
-import android.provider.ContactsContract
-import android.widget.Button
-import org.jetbrains.anko.toast
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import java.text.SimpleDateFormat
@@ -22,13 +17,7 @@ import kotlinx.android.synthetic.main.activity_second.*
 import java.io.IOException
 import java.util.*
 
-interface changeInterface{
-    fun stateOfApplyOrCancel(boolean: Boolean)
-    fun stateOfApplyOrCancelButtons(boolean: Boolean)
-}
-public class SecondActivity : AppCompatActivity(), changeInterface {
-
-    lateinit var buttons: Array<Button>
+public class SecondActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,23 +53,18 @@ public class SecondActivity : AppCompatActivity(), changeInterface {
         scale.setOnClickListener(){
             replaceFragment(ScaleFragment())
         }
-        segm.setOnClickListener(){
-            replaceFragment(SegmentationFragment())
+        blackWhite.setOnClickListener(){
+            replaceFragment(BlackWhiteFragment())
         }
-        inter.setOnClickListener(){
-            replaceFragment(InterpolationFragment())
+        contrast.setOnClickListener(){
+            replaceFragment(ContrastFragment())
         }
-        retouch.setOnClickListener(){
-            replaceFragment(RetouchingFragment())
+        soap.setOnClickListener(){
+            replaceFragment(SoapFragment())
         }
         mask.setOnClickListener(){
             replaceFragment(MaskFragment())
         }
-        bitri.setOnClickListener(){
-            replaceFragment(BiTriFiltrationFragment())
-        }
-
-        buttons = arrayOf(rotate, filters, bright, scale, segm, inter, retouch, mask, bitri)
 
         backMainActivity.setOnClickListener{
             val builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(this)
@@ -175,20 +159,4 @@ public class SecondActivity : AppCompatActivity(), changeInterface {
         transaction.replace(R.id.fr_place, fragment)
         transaction.commit()
     }
-
-    override fun stateOfApplyOrCancel(boolean: Boolean) {
-        if (boolean)
-        {
-            applyOrCancel.visibility = View.VISIBLE
-        } else
-        {
-            applyOrCancel.visibility = View.INVISIBLE
-        }
-    }
-    override fun stateOfApplyOrCancelButtons(boolean: Boolean) {
-        for (i in 0 until applyOrCancel.childCount) {
-            applyOrCancel.getChildAt(i).isEnabled = boolean
-        }
-    }
-
 }
