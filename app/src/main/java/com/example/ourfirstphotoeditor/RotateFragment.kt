@@ -14,7 +14,10 @@ import kotlinx.android.synthetic.main.fragment_rotate.*
 
 class RotateFragment : Fragment() {
 
-    var Photo: Bitmap? = null
+    companion object{
+        var Photo: Bitmap? = null
+        var currentDegreesOfRotation: Int = 0
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,6 +25,26 @@ class RotateFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_rotate, container, false)
+    }
+
+    private fun checkingResultSaved(){
+        (activity as SecondActivity).applyOrCancel.visibility=View.VISIBLE
+
+
+        (activity as SecondActivity).buttonCancel.setOnClickListener {
+            (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
+            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+            seekRotate.progress = 45
+            currentDegreesOfRotation = 0
+        }
+
+        (activity as SecondActivity).buttonApply.setOnClickListener {
+            Photo =((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
+            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+            seekRotate.progress = 45
+            currentDegreesOfRotation = 0
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,38 +55,55 @@ class RotateFragment : Fragment() {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
         }
 
-        seekRotate.progress=180
+        seekRotate.progress=45
         textViewRotate.text = "0°"
 
 
 
         seekRotate.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, b: Boolean) {
-                val temp = progress-180
+                val temp = progress-45
                 textViewRotate.text = "$temp°"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
-
+                currentDegreesOfRotation-=seekRotate.progress-45
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                val newBitmap=rotatePicture(Photo!!,seekRotate.progress.toDouble()-180)
+                currentDegreesOfRotation+=seekRotate.progress-45
+                currentDegreesOfRotation %=360
+                val newBitmap=rotatePicture(Photo!!, currentDegreesOfRotation.toDouble())
                 (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
+                checkingResultSaved()
             }
 
         })
-        buttonRotateLeft90.setOnClickListener() {
 
+        buttonRotateLeft90.setOnClickListener() {
+            currentDegreesOfRotation+=90
+            currentDegreesOfRotation %=360
+            val newBitmap=rotatePicture(Photo!!, currentDegreesOfRotation.toDouble())
+            (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
+            checkingResultSaved()
         }
         buttonZero.setOnClickListener(){
-
+            currentDegreesOfRotation = 0
+            seekRotate.progress = 45
+            val newBitmap=rotatePicture(Photo!!, currentDegreesOfRotation.toDouble())
+            (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
+            checkingResultSaved()
         }
         buttonRotateRight90.setOnClickListener() {
-
+            currentDegreesOfRotation-=90
+            currentDegreesOfRotation %=360
+            val newBitmap=rotatePicture(Photo!!, currentDegreesOfRotation.toDouble())
+            (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
+            checkingResultSaved()
         }
 
     }
+
 
 
     fun rotatePicture(originBitmap: Bitmap, degrees: Double):Bitmap {
@@ -90,7 +130,6 @@ class RotateFragment : Fragment() {
                 val xCurrent = (+a * cos - b * sin + xCenter).toInt()
                 val yCurrent = (+a * sin + b * cos + yCenter).toInt()
                 if (xCurrent >= 0 && xCurrent < width && yCurrent >= 0 && yCurrent < height) {
-                    //newImage.setPixel(x, y, originBitmap.getPixel(xCurrent, yCurrent))
                     newColorArray[(y*width)+x]=colorArray[(yCurrent*width)+xCurrent]
                 }
             }

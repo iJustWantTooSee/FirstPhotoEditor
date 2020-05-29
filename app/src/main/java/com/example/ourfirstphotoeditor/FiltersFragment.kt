@@ -52,6 +52,8 @@ class FiltersFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
+        Photo = null
+        firstImage = true
         if (Photo == null) {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
             if (firstImage){

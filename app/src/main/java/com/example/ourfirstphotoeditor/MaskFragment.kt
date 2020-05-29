@@ -16,12 +16,13 @@ import kotlinx.android.synthetic.main.fragment_mask.*
 class MaskFragment : Fragment() {
 
     companion object{
-        var Photo: Bitmap? = null
-        var amount: Float= 0.1f
-        var threshold: Int =0
-        var range: Int=1
+        var amountGlobal: Float= 0.1f
+        var thresholdGlobal: Int =0
+        var rangeGlobal: Int=1
 
     }
+
+    var Photo: Bitmap? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,9 +32,49 @@ class MaskFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_mask, container, false)
     }
 
+    private fun checkingResultSaved(){
+        (activity as SecondActivity).applyOrCancel.visibility=View.VISIBLE
+
+
+        (activity as SecondActivity).buttonCancel.setOnClickListener {
+            (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
+            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+
+            textViewAmount.text = "Amount: 0.1"
+            textViewRadius.text = "Radius: 1"
+            textViewThreshold.text = "Threshold: 0"
+
+            seekAmount.progress=1
+            seekThreshold.progress=0
+            seekRadius.progress=1
+
+            amountGlobal = 0.1f
+            rangeGlobal = 1
+            thresholdGlobal = 1
+        }
+
+        (activity as SecondActivity).buttonApply.setOnClickListener {
+            Photo =((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
+            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+
+            textViewAmount.text = "Amount: 0.1"
+            textViewRadius.text = "Radius: 1"
+            textViewThreshold.text = "Threshold: 0"
+
+            seekAmount.progress=1
+            seekThreshold.progress=1
+            seekRadius.progress=1
+
+            amountGlobal = 0.1f
+            rangeGlobal = 1
+            thresholdGlobal = 0
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Photo = null
         if (Photo == null) {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
         }
@@ -45,34 +86,47 @@ class MaskFragment : Fragment() {
 
         seekAmount.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                TODO("Not yet implemented")
+                textViewAmount.text = "Amount: ${(seekAmount.progress.toFloat() / 10)}"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                amountGlobal = (seekAmount.progress.toFloat())/10
+            }
         })
 
 
         seekRadius.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                TODO("Not yet implemented")
+                textViewRadius.text = "Radius: ${seekRadius.progress}"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                rangeGlobal = seekRadius.progress
+            }
         })
 
 
         seekThreshold.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                TODO("Not yet implemented")
+                textViewThreshold.text = "Threshold: ${seekThreshold.progress}"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                thresholdGlobal = seekThreshold.progress
+            }
         })
 
+        confirmButton.setOnClickListener {
+            checkingResultSaved()
+            var unsharpBitmap= unsharpMask(Photo!!, amountGlobal, thresholdGlobal, rangeGlobal)
+            (activity as SecondActivity).image_view.setImageBitmap(unsharpBitmap)
+        }
 
     }
 
-    private fun boxBlur(originBitmap: Bitmap): Bitmap? {
+    private fun boxBlur(originBitmap: Bitmap,
+    range:Int
+    ): Bitmap? {
         assert(range and 1 == 0) { "Range must be odd." }
 
 
@@ -104,35 +158,46 @@ class MaskFragment : Fragment() {
         halfRange: Int
     ) {
         var index = 0
+        var hits = 0
+        val alpha = -0x1000000
+        var r: Long = 0
+        var g: Long = 0
+        var b: Long = 0
+        var oldPixel=0
+        var newPixel:Int
+        var color:Int
+        var colorNew:Int
+
         val newColors = IntArray(w)
+
         for (y in 0 until h) {
-            var hits = 0
-            var r: Long = 0
-            var g: Long = 0
-            var b: Long = 0
+            hits = 0
+            r= 0
+            g = 0
+            b = 0
             for (x in -halfRange until w) {
-                val oldPixel = x - halfRange - 1
+                oldPixel = x - halfRange - 1
                 if (oldPixel >= 0) {
-                    val color = pixels[index + oldPixel]
+                    color = pixels[index + oldPixel]
                     if (color != 0) {
-                        r -= Color.red(color).toLong()
-                        g -= Color.green(color).toLong()
-                        b -= Color.blue(color).toLong()
+                        r -= color shr 16 and 0xff
+                        g -= color shr 8 and 0xff
+                        b -= color and 0xff
                     }
                     hits--
                 }
-                val newPixel = x + halfRange
+                newPixel = x + halfRange
                 if (newPixel < w) {
-                    val color = pixels[index + newPixel]
-                    if (color != 0) {
-                        r += Color.red(color).toLong()
-                        g += Color.green(color).toLong()
-                        b += Color.blue(color).toLong()
+                    colorNew = pixels[index + newPixel]
+                    if (colorNew != 0) {
+                        r += colorNew shr 16 and 0xff
+                        g += colorNew shr 8 and 0xff
+                        b += colorNew and 0xff
                     }
                     hits++
                 }
                 if (x >= 0) {
-                    newColors[x] = Color.argb(0xFF, (r / hits).toInt(), (g / hits).toInt(), (b / hits).toInt());
+                    newColors[x] = alpha or ((r / hits).toInt() shl 16) or ((g / hits).toInt() shl 8) or (b / hits).toInt()
                 }
             }
             for (x in 0 until w) {
@@ -147,37 +212,48 @@ class MaskFragment : Fragment() {
         halfRange: Int
     ) {
         val newColors = IntArray(h)
+        val alpha = -0x1000000
+        var hits = 0
+        var r: Long = 0
+        var g: Long = 0
+        var b: Long = 0
+        var index = 0
+        var oldPixel=0
+        var newPixel:Int
+        var color:Int
+        var colorNew:Int
+
         val oldPixelOffset = -(halfRange + 1) * w
         val newPixelOffset = halfRange * w
         for (x in 0 until w) {
-            var hits = 0
-            var r: Long = 0
-            var g: Long = 0
-            var b: Long = 0
-            var index = -halfRange * w + x
+           hits = 0
+            r = 0
+            g= 0
+            b= 0
+            index = -halfRange * w + x
             for (y in -halfRange until h) {
-                val oldPixel = y - halfRange - 1
+                oldPixel = y - halfRange - 1
                 if (oldPixel >= 0) {
-                    val color = pixels[index + oldPixelOffset]
+                    color = pixels[index + oldPixelOffset]
                     if (color != 0) {
-                        r -= Color.red(color).toLong()
-                        g -= Color.green(color).toLong()
-                        b -= Color.blue(color).toLong()
+                        r -= color shr 16 and 0xff
+                        g -= color shr 8 and 0xff
+                        b -= color and 0xff
                     }
                     hits--
                 }
-                val newPixel = y + halfRange
+                newPixel = y + halfRange
                 if (newPixel < h) {
-                    val color = pixels[index + newPixelOffset]
-                    if (color != 0) {
-                        r += Color.red(color).toLong()
-                        g += Color.green(color).toLong()
-                        b += Color.blue(color).toLong()
+                    colorNew = pixels[index + newPixelOffset]
+                    if (colorNew != 0) {
+                        r += colorNew shr 16 and 0xff
+                        g += colorNew shr 8 and 0xff
+                        b += colorNew and 0xff
                     }
                     hits++
                 }
                 if (y >= 0) {
-                    newColors[y] = Color.argb(0xFF, (r / hits).toInt(), (g / hits).toInt(), (b / hits).toInt());
+                    newColors[y] = alpha or ((r / hits).toInt() shl 16) or ((g / hits).toInt() shl 8) or (b / hits).toInt()
                 }
                 index += w
             }
@@ -189,7 +265,10 @@ class MaskFragment : Fragment() {
 
 
     private fun unsharpMask(
-        originBitmap: Bitmap
+        originBitmap: Bitmap,
+        amount:Float,
+        threshold:Int,
+        range: Int
     ):Bitmap {
         val height = originBitmap.height
         val width = originBitmap.width
@@ -199,7 +278,7 @@ class MaskFragment : Fragment() {
         val newPixels=IntArray(width*height)
 
 
-        val blurImage = boxBlur(originBitmap)
+        val blurImage = boxBlur(originBitmap, range)
 
         val blurPixelsArray = IntArray(width*height)
         blurImage!!.getPixels(blurPixelsArray, 0, width, 0, 0, width, height)

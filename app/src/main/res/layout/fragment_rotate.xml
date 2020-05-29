@@ -15,8 +15,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginBottom="24dp"
-        android:max="360"
-        android:progress="180"
+        android:max="90"
 
         android:progressTint="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"

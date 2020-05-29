@@ -58,14 +58,14 @@ class BrightFragment : Fragment() {
 
 
         (activity as SecondActivity).buttonCancel.setOnClickListener {
-            (activity as SecondActivity).image_view.setImageBitmap(FiltersFragment.Photo!!)
+            (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
             (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
             seekBright.progress=100
         }
 
         (activity as SecondActivity).buttonApply.setOnClickListener {
-            FiltersFragment.Photo =((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
-            (activity as SecondActivity).image_view.setImageBitmap(FiltersFragment.Photo!!)
+            Photo =((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
             (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
             seekBright.progress=100
         }

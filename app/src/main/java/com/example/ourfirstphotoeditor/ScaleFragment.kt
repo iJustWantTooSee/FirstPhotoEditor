@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import androidx.core.view.isInvisible
 import kotlinx.android.synthetic.main.activity_second.*
+import kotlinx.android.synthetic.main.fragment_bright.*
 import kotlinx.android.synthetic.main.fragment_scale.*
 
 class ScaleFragment : Fragment() {
@@ -40,11 +42,12 @@ class ScaleFragment : Fragment() {
                 textViewZoom.text = "image magnification $temp%"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
+
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                val tempPhoto=checkNewPhoto()
-                val trimmingTheEdges=trimmingTheEdgesPicture(tempPhoto, 100-seekZoom.progress)
+                val trimmingTheEdges=trimmingTheEdgesPicture(Photo!!, 100-seekZoom.progress)
                 val newBitmap= resizeBilinear(trimmingTheEdges, 100/(100f-seekZoom.progress))
                 (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
+                checkingResultSavedZoom()
             }
         })
 
@@ -57,18 +60,59 @@ class ScaleFragment : Fragment() {
 
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                val tempPhoto=checkNewPhoto()
-                val newBitmap2= resizeBilinear(tempPhoto, (seekScale.progress.toFloat()/100))
+                val newBitmap2= resizeBilinear(Photo!!, (seekScale.progress.toFloat()/100))
                 (activity as SecondActivity).image_view.setImageBitmap(newBitmap2)
+                checkingResultSavedScale()
 
             }
         })
 
     }
 
-    private fun checkNewPhoto():Bitmap{
-        Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
-        return Photo!!
+    private fun checkingResultSavedScale(){
+        (activity as SecondActivity).applyOrCancel.visibility=View.VISIBLE
+        seekZoom.visibility=View.INVISIBLE
+        textViewZoom.visibility=View.INVISIBLE
+        (activity as SecondActivity).buttonCancel.setOnClickListener {
+            (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
+            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+            seekZoom.visibility=View.VISIBLE
+            textViewZoom.visibility=View.VISIBLE
+            seekScale.progress=99
+        }
+
+        (activity as SecondActivity).buttonApply.setOnClickListener {
+            Photo =((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
+            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+            seekZoom.visibility=View.VISIBLE
+            textViewZoom.visibility=View.VISIBLE
+            seekScale.progress=99
+        }
+    }
+
+    private fun checkingResultSavedZoom(){
+        (activity as SecondActivity).applyOrCancel.visibility=View.VISIBLE
+        seekScale.visibility=View.INVISIBLE
+        textViewScale.visibility=View.INVISIBLE
+
+        (activity as SecondActivity).buttonCancel.setOnClickListener {
+            (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
+            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+
+            seekScale.visibility=View.VISIBLE
+            textViewScale.visibility=View.VISIBLE
+            seekZoom.progress=0
+        }
+
+        (activity as SecondActivity).buttonApply.setOnClickListener {
+            Photo =((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
+            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+            seekScale.visibility=View.VISIBLE
+            textViewScale.visibility=View.VISIBLE
+            seekZoom.progress=0
+        }
     }
 
     fun trimmingTheEdgesPicture(originBitmap:Bitmap, percent: Int): Bitmap{
