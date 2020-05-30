@@ -326,7 +326,12 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+<<<<<<< HEAD
             android:layout_height="match_parent">
+=======
+            android:layout_height="match_parent"
+            >
+>>>>>>> 76b2a320db3488f388f0856e60d8b30d55b2e153
 
             <Button
                 android:id="@+id/buttonCancel"

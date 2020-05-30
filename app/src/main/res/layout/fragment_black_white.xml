@@ -11,8 +11,12 @@
         android:id="@+id/seekBlackWhite"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginBottom="20dp"
         android:max="100"
+=======
+        android:max="50"
+>>>>>>> 76b2a320db3488f388f0856e60d8b30d55b2e153
         android:progress="1"
         android:progressTint="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
