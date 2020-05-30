@@ -17,7 +17,7 @@ import kotlin.math.min
 
 
 class BrightFragment : Fragment() {
-   private var Photo: Bitmap? = null
+    private var Photo: Bitmap? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,7 +34,7 @@ class BrightFragment : Fragment() {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
         }
 
-        seekBright.progress=100
+        seekBright.progress = 100
         textViewBright.text = "100% brightness"
 
         seekBright.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -42,9 +42,11 @@ class BrightFragment : Fragment() {
                 val temp = progress
                 textViewBright.text = "$temp% brightness"
             }
+
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                val newBrightnessImage=changesImageBrightness(Photo!!, seekBright.progress.toDouble()/100)
+                val newBrightnessImage =
+                    changesImageBrightness(Photo!!, seekBright.progress.toDouble() / 100)
                 (activity as SecondActivity).image_view.setImageBitmap(newBrightnessImage)
                 checkingResultSaved()
             }
@@ -53,55 +55,55 @@ class BrightFragment : Fragment() {
 
     }
 
-    private fun checkingResultSaved(){
-        (activity as SecondActivity).applyOrCancel.visibility=View.VISIBLE
+    private fun checkingResultSaved() {
+        (activity as SecondActivity).applyOrCancel.visibility = View.VISIBLE
 
 
         (activity as SecondActivity).buttonCancel.setOnClickListener {
             (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
-            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
-            seekBright.progress=100
+            (activity as SecondActivity).applyOrCancel.visibility = View.INVISIBLE
+            seekBright.progress = 100
         }
 
         (activity as SecondActivity).buttonApply.setOnClickListener {
-            Photo =((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
             (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
-            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
-            seekBright.progress=100
+            (activity as SecondActivity).applyOrCancel.visibility = View.INVISIBLE
+            seekBright.progress = 100
         }
     }
 
     ///----------------------------------Яркость--------------------------------------\\
-    fun changesImageBrightness(originBitmap: Bitmap, k:Double):Bitmap{
-        val width=originBitmap.width
-        val height=originBitmap.height
+    fun changesImageBrightness(originBitmap: Bitmap, k: Double): Bitmap {
+        val width = originBitmap.width
+        val height = originBitmap.height
 
-        val pixelsArray = IntArray(width*height)
+        val pixelsArray = IntArray(width * height)
         originBitmap.getPixels(pixelsArray, 0, width, 0, 0, width, height)
-        val temp=IntArray(width*height)
+        val temp = IntArray(width * height)
 
         var blue: Int
         var red: Int
         var green: Int
         var originPixel: Int
-        for (y in 0 until height){
-            for (x in 0 until width)  {
-                originPixel=pixelsArray[y*width+x]
+        for (y in 0 until height) {
+            for (x in 0 until width) {
+                originPixel = pixelsArray[y * width + x]
 
-                blue= Color.blue(originPixel)
-                red= Color.red(originPixel)
-                green= Color.green(originPixel)
+                blue = Color.blue(originPixel)
+                red = Color.red(originPixel)
+                green = Color.green(originPixel)
 
-                blue=(blue*k).toInt()
-                blue= min(255, max(0,blue))
+                blue = (blue * k).toInt()
+                blue = min(255, max(0, blue))
 
-                red=(red*k).toInt()
-                red= min(255, max(0,red))
+                red = (red * k).toInt()
+                red = min(255, max(0, red))
 
-                green=(green*k).toInt()
-                green= min(255, max(0,green))
+                green = (green * k).toInt()
+                green = min(255, max(0, green))
 
-                temp[y*width+x]= Color.rgb(red,green,blue)
+                temp[y * width + x] = Color.rgb(red, green, blue)
             }
         }
         return Bitmap.createBitmap(temp, width, height, Bitmap.Config.ARGB_8888)

@@ -30,7 +30,7 @@ class ScaleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (Photo == null) {
-           Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
         }
         textViewZoom.text = "image magnification 0%"
         textViewScale.text = "image scale 100%"
@@ -41,26 +41,28 @@ class ScaleFragment : Fragment() {
                 val temp = progress
                 textViewZoom.text = "image magnification $temp%"
             }
+
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                val trimmingTheEdges=trimmingTheEdgesPicture(Photo!!, 100-seekZoom.progress)
-                val newBitmap= resizeBilinear(trimmingTheEdges, 100/(100f-seekZoom.progress))
+                val trimmingTheEdges = trimmingTheEdgesPicture(Photo!!, 100 - seekZoom.progress)
+                val newBitmap = resizeBilinear(trimmingTheEdges, 100 / (100f - seekZoom.progress))
                 (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
                 checkingResultSavedZoom()
             }
         })
 
-        seekScale.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        seekScale.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                val temp =1+ progress
+                val temp = 1 + progress
                 textViewScale.text = "image scale $temp%"
             }
+
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
 
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                val newBitmap2= resizeBilinear(Photo!!, (seekScale.progress.toFloat()/100))
+                val newBitmap2 = resizeBilinear(Photo!!, (seekScale.progress.toFloat() / 100))
                 (activity as SecondActivity).image_view.setImageBitmap(newBitmap2)
                 checkingResultSavedScale()
 
@@ -69,70 +71,70 @@ class ScaleFragment : Fragment() {
 
     }
 
-    private fun checkingResultSavedScale(){
-        (activity as SecondActivity).applyOrCancel.visibility=View.VISIBLE
-        seekZoom.visibility=View.INVISIBLE
-        textViewZoom.visibility=View.INVISIBLE
+    private fun checkingResultSavedScale() {
+        (activity as SecondActivity).applyOrCancel.visibility = View.VISIBLE
+        seekZoom.visibility = View.INVISIBLE
+        textViewZoom.visibility = View.INVISIBLE
         (activity as SecondActivity).buttonCancel.setOnClickListener {
             (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
-            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
-            seekZoom.visibility=View.VISIBLE
-            textViewZoom.visibility=View.VISIBLE
-            seekScale.progress=99
+            (activity as SecondActivity).applyOrCancel.visibility = View.INVISIBLE
+            seekZoom.visibility = View.VISIBLE
+            textViewZoom.visibility = View.VISIBLE
+            seekScale.progress = 99
         }
 
         (activity as SecondActivity).buttonApply.setOnClickListener {
-            Photo =((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
             (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
-            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
-            seekZoom.visibility=View.VISIBLE
-            textViewZoom.visibility=View.VISIBLE
-            seekScale.progress=99
+            (activity as SecondActivity).applyOrCancel.visibility = View.INVISIBLE
+            seekZoom.visibility = View.VISIBLE
+            textViewZoom.visibility = View.VISIBLE
+            seekScale.progress = 99
         }
     }
 
-    private fun checkingResultSavedZoom(){
-        (activity as SecondActivity).applyOrCancel.visibility=View.VISIBLE
-        seekScale.visibility=View.INVISIBLE
-        textViewScale.visibility=View.INVISIBLE
+    private fun checkingResultSavedZoom() {
+        (activity as SecondActivity).applyOrCancel.visibility = View.VISIBLE
+        seekScale.visibility = View.INVISIBLE
+        textViewScale.visibility = View.INVISIBLE
 
         (activity as SecondActivity).buttonCancel.setOnClickListener {
             (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
-            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+            (activity as SecondActivity).applyOrCancel.visibility = View.INVISIBLE
 
-            seekScale.visibility=View.VISIBLE
-            textViewScale.visibility=View.VISIBLE
-            seekZoom.progress=0
+            seekScale.visibility = View.VISIBLE
+            textViewScale.visibility = View.VISIBLE
+            seekZoom.progress = 0
         }
 
         (activity as SecondActivity).buttonApply.setOnClickListener {
-            Photo =((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
             (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
-            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
-            seekScale.visibility=View.VISIBLE
-            textViewScale.visibility=View.VISIBLE
-            seekZoom.progress=0
+            (activity as SecondActivity).applyOrCancel.visibility = View.INVISIBLE
+            seekScale.visibility = View.VISIBLE
+            textViewScale.visibility = View.VISIBLE
+            seekZoom.progress = 0
         }
     }
 
-    fun trimmingTheEdgesPicture(originBitmap:Bitmap, percent: Int): Bitmap{
-        var w1= originBitmap!!.width
-        var w2=originBitmap!!.width*percent/100
-        var h1=originBitmap!!.height
-        var h2=originBitmap!!.height*percent/100
+    fun trimmingTheEdgesPicture(originBitmap: Bitmap, percent: Int): Bitmap {
+        var w1 = originBitmap!!.width
+        var w2 = originBitmap!!.width * percent / 100
+        var h1 = originBitmap!!.height
+        var h2 = originBitmap!!.height * percent / 100
 
-        val pixelsArray = IntArray(w1*h1)
+        val pixelsArray = IntArray(w1 * h1)
         originBitmap.getPixels(pixelsArray, 0, w1, 0, 0, w1, h1)
 
         val temp = IntArray(w2 * h2)
 
-        var xTemp: Int =(w1-w2)/2
-        var yTemp: Int =(h1-h2)/2
+        var xTemp: Int = (w1 - w2) / 2
+        var yTemp: Int = (h1 - h2) / 2
 
         for (i in 0 until h2) {
             for (j in 0 until w2) {
 
-                temp[i*w2+j]=pixelsArray[w1*(yTemp+i)+(xTemp+j)]
+                temp[i * w2 + j] = pixelsArray[w1 * (yTemp + i) + (xTemp + j)]
             }
         }
 
@@ -140,15 +142,15 @@ class ScaleFragment : Fragment() {
     }
 
 
-    fun resizeBilinear(originBitmap: Bitmap, k:Float): Bitmap {
+    fun resizeBilinear(originBitmap: Bitmap, k: Float): Bitmap {
         val w1 = originBitmap.width
-        val h1=originBitmap.height
+        val h1 = originBitmap.height
 
-        val pixelsArray = IntArray(w1*h1)
+        val pixelsArray = IntArray(w1 * h1)
         originBitmap.getPixels(pixelsArray, 0, w1, 0, 0, w1, h1)
 
-        val w2=(originBitmap.width*k).toInt()
-        val h2=(originBitmap.height*k).toInt()
+        val w2 = (originBitmap.width * k).toInt()
+        val h2 = (originBitmap.height * k).toInt()
         val temp = IntArray(w2 * h2)
 
         //We consider the square of pixels 2X2
@@ -213,7 +215,6 @@ class ScaleFragment : Fragment() {
 
         return Bitmap.createBitmap(temp, w2, h2, Bitmap.Config.ARGB_8888)
     }
-
 
 
 }

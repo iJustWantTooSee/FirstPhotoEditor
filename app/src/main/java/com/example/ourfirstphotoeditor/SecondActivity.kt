@@ -17,82 +17,80 @@ import kotlinx.android.synthetic.main.activity_second.*
 import java.io.IOException
 import java.util.*
 
-public class SecondActivity : AppCompatActivity(){
+public class SecondActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         val uri: Uri = intent.getParcelableExtra("imageUri")
-        if (uri!=null) {
+        if (uri != null) {
 
-            val compressedImage=decodeSampledBitmapFromResource(uri, 1024, 1024, this)
+            val compressedImage = decodeSampledBitmapFromResource(uri, 1024, 1024, this)
             image_view.setImageBitmap(compressedImage)
         }
         backMainActivity.setOnClickListener {
-            var intent = Intent(SecondActivity@this, MainActivity::class.java)
+            var intent = Intent(SecondActivity@ this, MainActivity::class.java)
             startActivity(intent)
         }
 
         buttonSave.setOnClickListener {
             //сохранить изображение
-            val originBitmap=(image_view.getDrawable() as BitmapDrawable).bitmap
+            val originBitmap = (image_view.getDrawable() as BitmapDrawable).bitmap
             savingPhoto(originBitmap)
         }
 
         applyOrCancel.visibility = View.INVISIBLE
 
-        rotate.setOnClickListener(){
+        rotate.setOnClickListener() {
             replaceFragment(RotateFragment())
         }
-        filters.setOnClickListener(){
+        filters.setOnClickListener() {
             replaceFragment(FiltersFragment())
         }
-        bright.setOnClickListener(){
+        bright.setOnClickListener() {
             replaceFragment(BrightFragment())
         }
-        scale.setOnClickListener(){
+        scale.setOnClickListener() {
             replaceFragment(ScaleFragment())
         }
-        blackWhite.setOnClickListener(){
+        blackWhite.setOnClickListener() {
             replaceFragment(BlackWhiteFragment())
         }
-        contrast.setOnClickListener(){
+        contrast.setOnClickListener() {
             replaceFragment(ContrastFragment())
         }
-        soap.setOnClickListener(){
+        soap.setOnClickListener() {
             replaceFragment(SoapFragment())
         }
-        mask.setOnClickListener(){
+        mask.setOnClickListener() {
             replaceFragment(MaskFragment())
         }
 
-        backMainActivity.setOnClickListener{
+        backMainActivity.setOnClickListener {
             val builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(this)
             builder.setTitle(getString(R.string.exitTitle))
                 .setMessage(getString(R.string.exitMessage))
-                    //If you leave your result will not be saved.
+                //If you leave your result will not be saved.
                 .setCancelable(true)
-            builder.setPositiveButton(getString(R.string.yes)){
-                dialog, which ->
+            builder.setPositiveButton(getString(R.string.yes)) { dialog, which ->
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
-            builder.setNegativeButton(getString(R.string.no)){
-                dialog, which -> dialog.cancel()
+            builder.setNegativeButton(getString(R.string.no)) { dialog, which ->
+                dialog.cancel()
             }
             builder.create().show()
         }
-        buttonSave.setOnClickListener{
+        buttonSave.setOnClickListener {
             val builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(this)
             //Save image?
             builder.setTitle(getString(R.string.save))
                 .setCancelable(true)
-            builder.setPositiveButton(getString(R.string.yes)){
-                    dialog, which ->
+            builder.setPositiveButton(getString(R.string.yes)) { dialog, which ->
                 savingPhoto((image_view.drawable as BitmapDrawable).bitmap)
             }
-            builder.setNegativeButton(getString(R.string.no)){
-                    dialog, which -> dialog.cancel()
+            builder.setNegativeButton(getString(R.string.no)) { dialog, which ->
+                dialog.cancel()
             }
             builder.create().show()
         }
@@ -125,12 +123,12 @@ public class SecondActivity : AppCompatActivity(){
         context: Context
     ): Bitmap? {
         // First decode with inJustDecodeBounds=true to check dimensions
-        val bitmap =BitmapFactory.Options().run {
+        val bitmap = BitmapFactory.Options().run {
             val stream = context.contentResolver.openInputStream(currentUri)
             inJustDecodeBounds = true
             BitmapFactory.decodeStream(stream, null, this)
 
-            inSampleSize=calculateInSampleSize(this, reqWidth, reqHeight)
+            inSampleSize = calculateInSampleSize(this, reqWidth, reqHeight)
 
             inJustDecodeBounds = false
 
@@ -138,16 +136,21 @@ public class SecondActivity : AppCompatActivity(){
             BitmapFactory.decodeStream(newBitmap, null, this)
         }
 
-       return bitmap
+        return bitmap
     }
 
 
-    private fun savingPhoto(originBitmap:Bitmap){
+    private fun savingPhoto(originBitmap: Bitmap) {
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val imageFileName = "IMG_$timeStamp"
 
         try {
-            MediaStore.Images.Media.insertImage(contentResolver, originBitmap, imageFileName, "Image of $title")
+            MediaStore.Images.Media.insertImage(
+                contentResolver,
+                originBitmap,
+                imageFileName,
+                "Image of $title"
+            )
             Toast.makeText(this, getString(R.string.saved), Toast.LENGTH_SHORT).show()
         } catch (e: IOException) {
             Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT).show()

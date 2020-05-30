@@ -23,12 +23,11 @@ class MainActivity : AppCompatActivity() {
         private val PERMISSION_CODE = 1000
         private val IMAGE_CAPTURE_CODE = 1001
         var image_uri: Uri? = null
-        var GALLERY_REQUEST_CODE =1
+        var GALLERY_REQUEST_CODE = 1
         private const val PICK_IMAGE_REQUEST = 1
-        var chCamera:Boolean=false
-        var chGallery:Boolean=false
+        var chCamera: Boolean = false
+        var chGallery: Boolean = false
     }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,49 +65,49 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(intent, GALLERY_REQUEST_CODE)
     }
 
-   private fun checkCamera(){
+    private fun checkCamera() {
         //if system os is Marshmallow or Above, we need to request runtime permission
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_DENIED ||
                 checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_DENIED){
+                == PackageManager.PERMISSION_DENIED
+            ) {
                 //permission was not enabled
-                chCamera=true
-                val permission = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                chCamera = true
+                val permission =
+                    arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 //show popup to request permission
                 requestPermissions(permission, PERMISSION_CODE)
-            }
-            else{
+            } else {
                 //permission already granted
                 openCamera()
             }
-        }
-        else{
+        } else {
             //system os is < marshmallow
             openCamera()
         }
     }
 
-    fun cheackGallery(){
+    fun cheackGallery() {
         //if system os is Marshmallow or Above, we need to request runtime permission
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_DENIED ||
                 checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_DENIED){
+                == PackageManager.PERMISSION_DENIED
+            ) {
                 //permission was not enabled
-                chGallery=true
-                val permission = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                chGallery = true
+                val permission =
+                    arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 //show popup to request permission
                 requestPermissions(permission, PERMISSION_CODE)
-            }
-            else{
+            } else {
                 //permission already granted
                 pickFromGallery()
             }
-        }
-        else{
+        } else {
             //system os is < marshmallow
             pickFromGallery()
         }
@@ -125,21 +124,24 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE)
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         //called when user presses ALLOW or DENY from Permission Request Popup
-        when(requestCode){
+        when (requestCode) {
             PERMISSION_CODE -> {
                 if (grantResults.size > 0 && grantResults[0] ==
-                    PackageManager.PERMISSION_GRANTED){
+                    PackageManager.PERMISSION_GRANTED
+                ) {
                     //permission from popup was granted
-                    if (chCamera){
-                    openCamera()
-                    }
-                    else{
+                    if (chCamera) {
+                        openCamera()
+                    } else {
                         pickFromGallery()
                     }
-                }
-                else{
+                } else {
                     //permission from popup was denied
                     Toast.makeText(this, getString(R.string.permDen), Toast.LENGTH_SHORT).show()
                 }
@@ -150,10 +152,10 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         //called when image was captured from camera intent
-        if (resultCode == Activity.RESULT_OK){
+        if (resultCode == Activity.RESULT_OK) {
             //set image captured to image view
-            if (image_uri!=null){
-                var intent = Intent(MainActivity@this, SecondActivity::class.java)
+            if (image_uri != null) {
+                var intent = Intent(MainActivity@ this, SecondActivity::class.java)
                 intent.putExtra("imageUri", image_uri);
                 startActivity(intent)
             }
@@ -162,12 +164,11 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             val uri = data!!.data
             try {
-                if (uri!=null) {
+                if (uri != null) {
                     var intent = Intent(MainActivity@ this, SecondActivity::class.java)
                     intent.putExtra("imageUri", uri);
                     startActivity(intent)
-                }
-                else{
+                } else {
                     Toast.makeText(this, getString(R.string.photoSelect), Toast.LENGTH_SHORT).show()
                 }
             } catch (e: IOException) {

@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_rotate.*
 
 class RotateFragment : Fragment() {
 
-    companion object{
+    companion object {
         var Photo: Bitmap? = null
         var currentDegreesOfRotation: Int = 0
     }
@@ -27,21 +27,21 @@ class RotateFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_rotate, container, false)
     }
 
-    private fun checkingResultSaved(){
-        (activity as SecondActivity).applyOrCancel.visibility=View.VISIBLE
+    private fun checkingResultSaved() {
+        (activity as SecondActivity).applyOrCancel.visibility = View.VISIBLE
 
 
         (activity as SecondActivity).buttonCancel.setOnClickListener {
             (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
-            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+            (activity as SecondActivity).applyOrCancel.visibility = View.INVISIBLE
             seekRotate.progress = 45
             currentDegreesOfRotation = 0
         }
 
         (activity as SecondActivity).buttonApply.setOnClickListener {
-            Photo =((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
             (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
-            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+            (activity as SecondActivity).applyOrCancel.visibility = View.INVISIBLE
             seekRotate.progress = 45
             currentDegreesOfRotation = 0
         }
@@ -51,30 +51,30 @@ class RotateFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        Photo=null
+        Photo = null
         if (Photo == null) {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
         }
 
-        seekRotate.progress=45
+        seekRotate.progress = 45
         textViewRotate.text = "0°"
 
 
 
         seekRotate.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, b: Boolean) {
-                val temp = progress-45
+                val temp = progress - 45
                 textViewRotate.text = "$temp°"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
-                currentDegreesOfRotation-=seekRotate.progress-45
+                currentDegreesOfRotation -= seekRotate.progress - 45
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                currentDegreesOfRotation+=seekRotate.progress-45
-                currentDegreesOfRotation %=360
-                val newBitmap=rotatePicture(Photo!!, currentDegreesOfRotation.toDouble())
+                currentDegreesOfRotation += seekRotate.progress - 45
+                currentDegreesOfRotation %= 360
+                val newBitmap = rotatePicture(Photo!!, currentDegreesOfRotation.toDouble())
                 (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
                 checkingResultSaved()
             }
@@ -83,27 +83,27 @@ class RotateFragment : Fragment() {
 
 
         buttonRotateLeft90.setOnClickListener() {
-            currentDegreesOfRotation+=90
-            currentDegreesOfRotation %=360
-            val newBitmap=rotatePicture(Photo!!, currentDegreesOfRotation.toDouble())
+            currentDegreesOfRotation += 90
+            currentDegreesOfRotation %= 360
+            val newBitmap = rotatePicture(Photo!!, currentDegreesOfRotation.toDouble())
             (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
             checkingResultSaved()
         }
 
 
-        buttonZero.setOnClickListener(){
+        buttonZero.setOnClickListener() {
             currentDegreesOfRotation = 0
             seekRotate.progress = 45
-            val newBitmap=rotatePicture(Photo!!, currentDegreesOfRotation.toDouble())
+            val newBitmap = rotatePicture(Photo!!, currentDegreesOfRotation.toDouble())
             (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
             checkingResultSaved()
         }
 
 
         buttonRotateRight90.setOnClickListener() {
-            currentDegreesOfRotation-=90
-            currentDegreesOfRotation %=360
-            val newBitmap=rotatePicture(Photo!!, currentDegreesOfRotation.toDouble())
+            currentDegreesOfRotation -= 90
+            currentDegreesOfRotation %= 360
+            val newBitmap = rotatePicture(Photo!!, currentDegreesOfRotation.toDouble())
             (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
             checkingResultSaved()
         }
@@ -111,8 +111,7 @@ class RotateFragment : Fragment() {
     }
 
 
-
-    fun rotatePicture(originBitmap: Bitmap, degrees: Double):Bitmap {
+    fun rotatePicture(originBitmap: Bitmap, degrees: Double): Bitmap {
         val width: Int = originBitmap.getWidth()
         val height: Int = originBitmap.getHeight()
 
@@ -129,18 +128,18 @@ class RotateFragment : Fragment() {
         val yCenter = 0.5 * (height - 1) // center of image
 
         // rotation
-        for (y in 0 until height){
-            for (x in 0 until width)  {
+        for (y in 0 until height) {
+            for (x in 0 until width) {
                 val a = x - xCenter
                 val b = y - yCenter
                 val xCurrent = (+a * cos - b * sin + xCenter).toInt()
                 val yCurrent = (+a * sin + b * cos + yCenter).toInt()
                 if (xCurrent >= 0 && xCurrent < width && yCurrent >= 0 && yCurrent < height) {
-                    newColorArray[(y*width)+x]=colorArray[(yCurrent*width)+xCurrent]
+                    newColorArray[(y * width) + x] = colorArray[(yCurrent * width) + xCurrent]
                 }
             }
         }
-       return Bitmap.createBitmap(newColorArray, width, height, Bitmap.Config.ARGB_8888)
+        return Bitmap.createBitmap(newColorArray, width, height, Bitmap.Config.ARGB_8888)
     }
 
 }

@@ -24,19 +24,19 @@ class SoapFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_soap, container, false)
     }
 
-    private fun checkingResultSaved(){
-        (activity as SecondActivity).applyOrCancel.visibility=View.VISIBLE
+    private fun checkingResultSaved() {
+        (activity as SecondActivity).applyOrCancel.visibility = View.VISIBLE
 
         (activity as SecondActivity).buttonCancel.setOnClickListener {
             (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
-            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+            (activity as SecondActivity).applyOrCancel.visibility = View.INVISIBLE
             seekSoap.progress = 0
         }
 
         (activity as SecondActivity).buttonApply.setOnClickListener {
-            Photo =((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
+            Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
             (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
-            (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
+            (activity as SecondActivity).applyOrCancel.visibility = View.INVISIBLE
             seekSoap.progress = 0
         }
     }
@@ -45,7 +45,7 @@ class SoapFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Photo=null
+        Photo = null
 
         if (Photo == null) {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
@@ -58,9 +58,10 @@ class SoapFragment : Fragment() {
 
         seekSoap.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, b: Boolean) {
-                val temp = progress*2
+                val temp = progress * 2
                 textViewSoap.text = "Blur: $temp%"
             }
+
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 val blurBitmap = boxBlur(Photo!!, seekSoap.progress)
@@ -71,8 +72,9 @@ class SoapFragment : Fragment() {
 
     }
 
-    private fun boxBlur(originBitmap: Bitmap,
-                        range:Int
+    private fun boxBlur(
+        originBitmap: Bitmap,
+        range: Int
     ): Bitmap? {
         assert(range and 1 == 0) { "Range must be odd." }
 
@@ -110,16 +112,16 @@ class SoapFragment : Fragment() {
         var r: Long = 0
         var g: Long = 0
         var b: Long = 0
-        var oldPixel=0
-        var newPixel:Int
-        var color:Int
-        var colorNew:Int
+        var oldPixel = 0
+        var newPixel: Int
+        var color: Int
+        var colorNew: Int
 
         val newColors = IntArray(w)
 
         for (y in 0 until h) {
             hits = 0
-            r= 0
+            r = 0
             g = 0
             b = 0
             for (x in -halfRange until w) {
@@ -144,7 +146,8 @@ class SoapFragment : Fragment() {
                     hits++
                 }
                 if (x >= 0) {
-                    newColors[x] = alpha or ((r / hits).toInt() shl 16) or ((g / hits).toInt() shl 8) or (b / hits).toInt()
+                    newColors[x] =
+                        alpha or ((r / hits).toInt() shl 16) or ((g / hits).toInt() shl 8) or (b / hits).toInt()
                 }
             }
             for (x in 0 until w) {
@@ -165,18 +168,18 @@ class SoapFragment : Fragment() {
         var g: Long = 0
         var b: Long = 0
         var index = 0
-        var oldPixel=0
-        var newPixel:Int
-        var color:Int
-        var colorNew:Int
+        var oldPixel = 0
+        var newPixel: Int
+        var color: Int
+        var colorNew: Int
 
         val oldPixelOffset = -(halfRange + 1) * w
         val newPixelOffset = halfRange * w
         for (x in 0 until w) {
             hits = 0
             r = 0
-            g= 0
-            b= 0
+            g = 0
+            b = 0
             index = -halfRange * w + x
             for (y in -halfRange until h) {
                 oldPixel = y - halfRange - 1
@@ -200,7 +203,8 @@ class SoapFragment : Fragment() {
                     hits++
                 }
                 if (y >= 0) {
-                    newColors[y] = alpha or ((r / hits).toInt() shl 16) or ((g / hits).toInt() shl 8) or (b / hits).toInt()
+                    newColors[y] =
+                        alpha or ((r / hits).toInt() shl 16) or ((g / hits).toInt() shl 8) or (b / hits).toInt()
                 }
                 index += w
             }
@@ -209,7 +213,6 @@ class SoapFragment : Fragment() {
             }
         }
     }
-
 
 
 }
