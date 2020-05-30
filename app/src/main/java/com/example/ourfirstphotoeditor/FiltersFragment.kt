@@ -8,12 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.HorizontalScrollView
-import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_second.*
 import kotlinx.android.synthetic.main.fragment_filters.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 import kotlin.math.min
 
 class FiltersFragment : Fragment() {
@@ -48,6 +44,7 @@ class FiltersFragment : Fragment() {
             Photo=((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
             (activity as SecondActivity).image_view.setImageBitmap(Photo!!)
             thumbnailImage = Bitmap.createScaledBitmap(Photo!!, 150, 150, false)
+
             imagePreview(thumbnailImage!!)
             (activity as SecondActivity).applyOrCancel.visibility=View.INVISIBLE
         }
@@ -59,13 +56,16 @@ class FiltersFragment : Fragment() {
 
         Photo = null
         firstImage = true
+
         if (Photo == null) {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
             thumbnailImage = Bitmap.createScaledBitmap(Photo!!, 150, 150, false)
+
             if (firstImage){
                 firstImageBitmap= Photo
                 firstImage=false
             }
+
             imagePreview(thumbnailImage!!)
         }
 
@@ -81,53 +81,50 @@ class FiltersFragment : Fragment() {
         }
 
 
-        filter3.setOnClickListener {
+        filter2.setOnClickListener {
             val grayScalePicture=grayscaleFilters(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(grayScalePicture)
             checkingResultSaved()
         }
 
-        filter4.setOnClickListener {
+        filter3.setOnClickListener {
             val sepiaPicture=sepiaFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(sepiaPicture)
             checkingResultSaved()
         }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 76b2a320db3488f388f0856e60d8b30d55b2e153
-        filter6.setOnClickListener {
+        filter4.setOnClickListener {
             val redPicture=redFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(redPicture)
             checkingResultSaved()
         }
 
-        filter7.setOnClickListener {
+        filter5.setOnClickListener {
             val greenPicture=greenFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(greenPicture)
             checkingResultSaved()
         }
 
-        filter8.setOnClickListener {
+        filter6.setOnClickListener {
             val bluePicture=blueFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(bluePicture)
             checkingResultSaved()
         }
 
-        filter9.setOnClickListener {
+        filter7.setOnClickListener {
             val yellowPicture = yellowFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(yellowPicture)
             checkingResultSaved()
         }
 
-        filter10.setOnClickListener {
+        filter8.setOnClickListener {
             val pinkPicture=pinkFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(pinkPicture)
             checkingResultSaved()
         }
 
-        filter11.setOnClickListener {
+        filter9.setOnClickListener {
             val azurePicture=azureFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(azurePicture)
             checkingResultSaved()
@@ -138,16 +135,16 @@ class FiltersFragment : Fragment() {
     }
 
     private fun imagePreview(bitmapPreview: Bitmap){
-        imageViewFilter0.setImageBitmap(bitmapPreview)
+        imageViewFilter0.setImageBitmap(firstImageBitmap)
         imageViewFilter1.setImageBitmap(negativeFilter(bitmapPreview))
-        imageViewFilter3.setImageBitmap(grayscaleFilters(bitmapPreview))
-        imageViewFilter4.setImageBitmap(sepiaFilter(bitmapPreview))
-        imageViewFilter6.setImageBitmap(redFilter(bitmapPreview))
-        imageViewFilter7.setImageBitmap(greenFilter(bitmapPreview))
-        imageViewFilter8.setImageBitmap(blueFilter(bitmapPreview))
-        imageViewFilter9.setImageBitmap(yellowFilter(bitmapPreview))
-        imageViewFilter10.setImageBitmap(pinkFilter(bitmapPreview))
-        imageViewFilter11.setImageBitmap(azureFilter(bitmapPreview))
+        imageViewFilter2.setImageBitmap(grayscaleFilters(bitmapPreview))
+        imageViewFilter3.setImageBitmap(sepiaFilter(bitmapPreview))
+        imageViewFilter4.setImageBitmap(redFilter(bitmapPreview))
+        imageViewFilter5.setImageBitmap(greenFilter(bitmapPreview))
+        imageViewFilter6.setImageBitmap(blueFilter(bitmapPreview))
+        imageViewFilter7.setImageBitmap(yellowFilter(bitmapPreview))
+        imageViewFilter8.setImageBitmap(pinkFilter(bitmapPreview))
+        imageViewFilter9.setImageBitmap(azureFilter(bitmapPreview))
 
     }
 

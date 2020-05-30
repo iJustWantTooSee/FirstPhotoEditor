@@ -49,7 +49,7 @@
                     android:layout_height="76dp"
                     android:layout_marginStart="15dp"
                     android:layout_weight="1"
-                    android:text="Original"
+                    android:text="Org"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/filter1"
                     app:layout_constraintStart_toStartOf="parent"
@@ -64,10 +64,24 @@
                     android:layout_weight="1"
                     android:text="Negative"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/filter3"
+                    app:layout_constraintEnd_toStartOf="@+id/filter2"
                     app:layout_constraintStart_toEndOf="@+id/filter0"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.208" />
+
+                <Button
+                    android:id="@+id/filter2"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="76dp"
+                    android:layout_weight="1"
+                    android:text="Gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/filter3"
+                    app:layout_constraintStart_toEndOf="@+id/filter1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.208" />
+
 
                 <Button
                     android:id="@+id/filter3"
@@ -75,13 +89,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="76dp"
                     android:layout_weight="1"
-                    android:text="Gray"
+                    android:text="Sepia"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/filter4"
-                    app:layout_constraintStart_toEndOf="@+id/filter1"
+                    app:layout_constraintStart_toEndOf="@+id/filter2"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.208" />
-
 
                 <Button
                     android:id="@+id/filter4"
@@ -89,10 +102,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="76dp"
                     android:layout_weight="1"
-                    android:text="Sepia"
+                    android:text="Red"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/filter5"
+                    app:layout_constraintStart_toEndOf="@+id/filter3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.208" />
+
+                <Button
+                    android:id="@+id/filter5"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="76dp"
+                    android:layout_weight="1"
+                    android:text="Green"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/filter6"
-                    app:layout_constraintStart_toEndOf="@+id/filter3"
+                    app:layout_constraintStart_toEndOf="@+id/filter4"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.208" />
 
@@ -102,10 +128,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="76dp"
                     android:layout_weight="1"
-                    android:text="Red"
+                    android:text="Blue"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/filter7"
-                    app:layout_constraintStart_toEndOf="@+id/filter4"
+                    app:layout_constraintStart_toEndOf="@+id/filter5"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.208" />
 
@@ -115,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="76dp"
                     android:layout_weight="1"
-                    android:text="Green"
+                    android:text="Yellow"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/filter8"
                     app:layout_constraintStart_toEndOf="@+id/filter6"
@@ -128,12 +154,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="76dp"
                     android:layout_weight="1"
-                    android:text="Blue"
+                    android:text="Pink"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/filter9"
                     app:layout_constraintStart_toEndOf="@+id/filter7"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.208" />
+
 
                 <Button
                     android:id="@+id/filter9"
@@ -141,37 +168,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="76dp"
                     android:layout_weight="1"
-                    android:text="Yellow"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/filter10"
-                    app:layout_constraintStart_toEndOf="@+id/filter8"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.208" />
-
-                <Button
-                    android:id="@+id/filter10"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="wrap_content"
-                    android:layout_height="76dp"
-                    android:layout_weight="1"
-                    android:text="Pink"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/filter11"
-                    app:layout_constraintStart_toEndOf="@+id/filter9"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.208" />
-
-
-                <Button
-                    android:id="@+id/filter11"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="wrap_content"
-                    android:layout_height="76dp"
-                    android:layout_weight="1"
                     android:text="Azure"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/filter10"
+                    app:layout_constraintStart_toEndOf="@+id/filter8"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.208" />
 
@@ -200,6 +200,18 @@
                     app:layout_constraintVertical_bias="1.0" />
 
                 <ImageView
+                    android:id="@+id/imageViewFilter2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter2"
+                    app:layout_constraintEnd_toEndOf="@+id/filter2"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter2"
+                    app:layout_constraintTop_toTopOf="@+id/filter2"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
                     android:id="@+id/imageViewFilter3"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -224,16 +236,28 @@
                     app:layout_constraintVertical_bias="0.5" />
 
                 <ImageView
+                    android:id="@+id/imageViewFilter5"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintBottom_toBottomOf="@+id/filter5"
+                    app:layout_constraintEnd_toEndOf="@+id/filter5"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@+id/filter5"
+                    app:layout_constraintTop_toTopOf="@+id/filter5"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <ImageView
                     android:id="@+id/imageViewFilter6"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="@+id/filter6"
                     app:layout_constraintEnd_toEndOf="@+id/filter6"
-                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/filter6"
                     app:layout_constraintTop_toTopOf="@+id/filter6"
-                    app:layout_constraintVertical_bias="0.5" />
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <ImageView
                     android:id="@+id/imageViewFilter7"
@@ -254,10 +278,10 @@
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="@+id/filter8"
                     app:layout_constraintEnd_toEndOf="@+id/filter8"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintHorizontal_bias="0.586"
                     app:layout_constraintStart_toStartOf="@+id/filter8"
                     app:layout_constraintTop_toTopOf="@+id/filter8"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="0.5" />
 
                 <ImageView
                     android:id="@+id/imageViewFilter9"
@@ -269,30 +293,6 @@
                     app:layout_constraintHorizontal_bias="0.586"
                     app:layout_constraintStart_toStartOf="@+id/filter9"
                     app:layout_constraintTop_toTopOf="@+id/filter9"
-                    app:layout_constraintVertical_bias="0.5" />
-
-                <ImageView
-                    android:id="@+id/imageViewFilter10"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:src="@drawable/ic_launcher_background"
-                    app:layout_constraintBottom_toBottomOf="@+id/filter10"
-                    app:layout_constraintEnd_toEndOf="@+id/filter10"
-                    app:layout_constraintHorizontal_bias="0.586"
-                    app:layout_constraintStart_toStartOf="@+id/filter10"
-                    app:layout_constraintTop_toTopOf="@+id/filter10"
-                    app:layout_constraintVertical_bias="0.5" />
-
-                <ImageView
-                    android:id="@+id/imageViewFilter11"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:src="@drawable/ic_launcher_background"
-                    app:layout_constraintBottom_toBottomOf="@+id/filter11"
-                    app:layout_constraintEnd_toEndOf="@+id/filter11"
-                    app:layout_constraintHorizontal_bias="0.586"
-                    app:layout_constraintStart_toStartOf="@+id/filter11"
-                    app:layout_constraintTop_toTopOf="@+id/filter11"
                     app:layout_constraintVertical_bias="0.5" />
 
                 <TextView
@@ -318,71 +318,71 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Gray"
-                    app:layout_constraintEnd_toEndOf="@+id/filter3"
-                    app:layout_constraintStart_toStartOf="@+id/filter3"
-                    app:layout_constraintTop_toBottomOf="@+id/filter3" />
+                    app:layout_constraintEnd_toEndOf="@+id/filter2"
+                    app:layout_constraintStart_toStartOf="@+id/filter2"
+                    app:layout_constraintTop_toBottomOf="@+id/filter2" />
 
                 <TextView
                     android:id="@+id/textViewSepia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sepia"
-                    app:layout_constraintEnd_toEndOf="@+id/filter4"
-                    app:layout_constraintStart_toStartOf="@+id/filter4"
-                    app:layout_constraintTop_toBottomOf="@+id/filter4"/>
+                    app:layout_constraintEnd_toEndOf="@+id/filter3"
+                    app:layout_constraintStart_toStartOf="@+id/filter3"
+                    app:layout_constraintTop_toBottomOf="@+id/filter3"/>
 
                 <TextView
                     android:id="@+id/textViewRed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Red"
-                    app:layout_constraintEnd_toEndOf="@+id/filter6"
-                    app:layout_constraintStart_toStartOf="@+id/filter6"
-                    app:layout_constraintTop_toBottomOf="@+id/filter6"/>
+                    app:layout_constraintEnd_toEndOf="@+id/filter4"
+                    app:layout_constraintStart_toStartOf="@+id/filter4"
+                    app:layout_constraintTop_toBottomOf="@+id/filter4"/>
 
                 <TextView
                     android:id="@+id/textViewGreen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Green"
-                    app:layout_constraintEnd_toEndOf="@+id/filter7"
-                    app:layout_constraintStart_toStartOf="@+id/filter7"
-                    app:layout_constraintTop_toBottomOf="@+id/filter7"/>
+                    app:layout_constraintEnd_toEndOf="@+id/filter5"
+                    app:layout_constraintStart_toStartOf="@+id/filter5"
+                    app:layout_constraintTop_toBottomOf="@+id/filter5"/>
 
                 <TextView
                     android:id="@+id/textViewBlue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Blue"
-                    app:layout_constraintEnd_toEndOf="@+id/filter8"
-                    app:layout_constraintStart_toStartOf="@+id/filter8"
-                    app:layout_constraintTop_toBottomOf="@+id/filter8"/>
+                    app:layout_constraintEnd_toEndOf="@+id/filter6"
+                    app:layout_constraintStart_toStartOf="@+id/filter6"
+                    app:layout_constraintTop_toBottomOf="@+id/filter6"/>
 
                 <TextView
                     android:id="@+id/textViewYellow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Yellow"
-                    app:layout_constraintEnd_toEndOf="@+id/filter9"
-                    app:layout_constraintStart_toStartOf="@+id/filter9"
-                    app:layout_constraintTop_toBottomOf="@+id/filter9"/>
+                    app:layout_constraintEnd_toEndOf="@+id/filter7"
+                    app:layout_constraintStart_toStartOf="@+id/filter7"
+                    app:layout_constraintTop_toBottomOf="@+id/filter7"/>
 
                 <TextView
                     android:id="@+id/textViewPink"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pink"
-                    app:layout_constraintEnd_toEndOf="@+id/filter10"
-                    app:layout_constraintStart_toStartOf="@+id/filter10"
-                    app:layout_constraintTop_toBottomOf="@+id/filter10"/>
+                    app:layout_constraintEnd_toEndOf="@+id/filter8"
+                    app:layout_constraintStart_toStartOf="@+id/filter8"
+                    app:layout_constraintTop_toBottomOf="@+id/filter8"/>
                 <TextView
                     android:id="@+id/textViewAzure"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Azure"
-                    app:layout_constraintEnd_toEndOf="@+id/filter11"
-                    app:layout_constraintStart_toStartOf="@+id/filter11"
-                    app:layout_constraintTop_toBottomOf="@+id/filter11"/>
+                    app:layout_constraintEnd_toEndOf="@+id/filter9"
+                    app:layout_constraintStart_toStartOf="@+id/filter9"
+                    app:layout_constraintTop_toBottomOf="@+id/filter9"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

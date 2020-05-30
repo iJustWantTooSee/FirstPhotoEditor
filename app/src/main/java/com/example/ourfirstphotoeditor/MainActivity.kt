@@ -177,17 +177,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-    /*private fun createImageFile(): File {
-        val imageFileName = "JPEG_temp"
-        val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        val image = File.createTempFile(imageFileName, ".jpg", storageDir)
-
-        currentPhotoPath = image.absolutePath
-
-        return image
-    }*/
-
 }
 
 

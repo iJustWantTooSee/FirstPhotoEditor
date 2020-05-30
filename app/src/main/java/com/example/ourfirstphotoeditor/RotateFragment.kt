@@ -51,6 +51,7 @@ class RotateFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
+        Photo=null
         if (Photo == null) {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
         }
@@ -80,6 +81,7 @@ class RotateFragment : Fragment() {
 
         })
 
+
         buttonRotateLeft90.setOnClickListener() {
             currentDegreesOfRotation+=90
             currentDegreesOfRotation %=360
@@ -87,6 +89,8 @@ class RotateFragment : Fragment() {
             (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
             checkingResultSaved()
         }
+
+
         buttonZero.setOnClickListener(){
             currentDegreesOfRotation = 0
             seekRotate.progress = 45
@@ -94,6 +98,8 @@ class RotateFragment : Fragment() {
             (activity as SecondActivity).image_view.setImageBitmap(newBitmap)
             checkingResultSaved()
         }
+
+
         buttonRotateRight90.setOnClickListener() {
             currentDegreesOfRotation-=90
             currentDegreesOfRotation %=360
