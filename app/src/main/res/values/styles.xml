@@ -11,13 +11,11 @@
 
     <style name="you_look_ni">
 
-        <item
-            name="android:textSize">
+        <item name="android:textSize">
             60sp
         </item>
 
-        <item
-            name="android:textColor">
+        <item name="android:textColor">
             #023047
         </item>
 
