@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_scale.*
 
 class ScaleFragment : Fragment() {
 
-    var Photo: Bitmap? = null
+    private var Photo: Bitmap? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
