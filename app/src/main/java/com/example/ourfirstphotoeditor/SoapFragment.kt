@@ -9,31 +9,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import kotlinx.android.synthetic.main.activity_second.*
-import kotlinx.android.synthetic.main.fragment_contrast.*
+import kotlinx.android.synthetic.main.fragment_soap.*
 
-class ContrastFragment : Fragment() {
+class SoapFragment : Fragment() {
     private var Photo: Bitmap? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contrast, container, false)
+        return inflater.inflate(R.layout.fragment_soap, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (Photo == null) {
             Photo = ((activity as SecondActivity)!!.image_view.drawable as BitmapDrawable).bitmap
         }
 
-        seekContrast.progress = 1
-        textViewContrast.text = "1 contrast"
+        seekSoap.progress = 1
+        textViewSoap.text = "1"
 
-        seekContrast.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        seekSoap.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, b: Boolean) {
                 val temp = progress
-                textViewContrast.text = "$temp "
+                textViewSoap.text = "$temp"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}

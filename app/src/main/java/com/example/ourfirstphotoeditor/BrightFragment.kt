@@ -104,11 +104,6 @@ class BrightFragment : Fragment() {
                 temp[y*width+x]= Color.rgb(red,green,blue)
             }
         }
-
         return Bitmap.createBitmap(temp, width, height, Bitmap.Config.ARGB_8888)
-
     }
-
-
-
 }

@@ -173,7 +173,7 @@
                         android:layout_weight="1"
                         android:backgroundTint="#00FFFFFF"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/segm"
+                        app:layout_constraintEnd_toStartOf="@+id/blackWhite"
                         app:layout_constraintStart_toEndOf="@+id/bright"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -195,57 +195,57 @@
 
                     <!--Button 5-->
                     <Button
-                        android:id="@+id/segm"
+                        android:id="@+id/blackWhite"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="wrap_content"
                         android:layout_height="76dp"
                         android:layout_weight="1"
                         android:backgroundTint="#00FFFFFF"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/inter"
+                        app:layout_constraintEnd_toStartOf="@+id/contrast"
                         app:layout_constraintStart_toEndOf="@+id/scale"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RelativeLayout
-                        android:id="@+id/iconSegm"
+                        android:id="@+id/iconBlackWhite"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
-                        android:background="@drawable/segment"
-                        app:layout_constraintBottom_toBottomOf="@+id/segm"
-                        app:layout_constraintEnd_toStartOf="@+id/inter"
+                        android:background="@drawable/black_white"
+                        app:layout_constraintBottom_toBottomOf="@+id/blackWhite"
+                        app:layout_constraintEnd_toStartOf="@+id/contrast"
                         app:layout_constraintStart_toEndOf="@+id/scale"
-                        app:layout_constraintTop_toTopOf="@+id/segm" />
+                        app:layout_constraintTop_toTopOf="@+id/blackWhite" />
 
                     <!--Button 6-->
                     <Button
-                        android:id="@+id/inter"
+                        android:id="@+id/contrast"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="wrap_content"
                         android:layout_height="76dp"
                         android:layout_weight="1"
                         android:backgroundTint="#00FFFFFF"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/retouch"
-                        app:layout_constraintStart_toEndOf="@+id/segm"
+                        app:layout_constraintEnd_toStartOf="@+id/soap"
+                        app:layout_constraintStart_toEndOf="@+id/blackWhite"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RelativeLayout
-                        android:id="@+id/iconInter"
+                        android:id="@+id/iconContrast"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
-                        android:background="@drawable/interpolation"
-                        app:layout_constraintBottom_toBottomOf="@+id/inter"
-                        app:layout_constraintEnd_toStartOf="@+id/retouch"
-                        app:layout_constraintStart_toStartOf="@+id/inter"
-                        app:layout_constraintTop_toTopOf="@+id/inter" />
+                        android:background="@drawable/contrast"
+                        app:layout_constraintBottom_toBottomOf="@+id/contrast"
+                        app:layout_constraintEnd_toStartOf="@+id/soap"
+                        app:layout_constraintStart_toStartOf="@+id/contrast"
+                        app:layout_constraintTop_toTopOf="@+id/contrast" />
 
                     <!--Button 7-->
                     <Button
-                        android:id="@+id/retouch"
+                        android:id="@+id/soap"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="wrap_content"
                         android:layout_height="76dp"
@@ -253,20 +253,20 @@
                         android:backgroundTint="#00FFFFFF"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/mask"
-                        app:layout_constraintStart_toEndOf="@+id/inter"
+                        app:layout_constraintStart_toEndOf="@+id/contrast"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RelativeLayout
-                        android:id="@+id/iconRetouch"
+                        android:id="@+id/iconSoap"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
-                        android:background="@drawable/create"
-                        app:layout_constraintBottom_toBottomOf="@+id/retouch"
-                        app:layout_constraintEnd_toEndOf="@+id/retouch"
-                        app:layout_constraintStart_toStartOf="@+id/retouch"
-                        app:layout_constraintTop_toTopOf="@+id/retouch" />
+                        android:background="@drawable/soap"
+                        app:layout_constraintBottom_toBottomOf="@+id/soap"
+                        app:layout_constraintEnd_toEndOf="@+id/soap"
+                        app:layout_constraintStart_toStartOf="@+id/soap"
+                        app:layout_constraintTop_toTopOf="@+id/soap" />
 
                     <!--Button 8-->
                     <Button
@@ -277,8 +277,8 @@
                         android:layout_weight="1"
                         android:backgroundTint="#00FFFFFF"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/bitri"
-                        app:layout_constraintStart_toEndOf="@+id/retouch"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/soap"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RelativeLayout
@@ -290,35 +290,10 @@
                         android:background="@drawable/mask"
                         app:layout_constraintBottom_toBottomOf="@+id/mask"
                         app:layout_constraintEnd_toEndOf="@+id/mask"
-                        app:layout_constraintStart_toEndOf="@+id/retouch"
+                        app:layout_constraintStart_toEndOf="@+id/soap"
                         app:layout_constraintTop_toTopOf="@+id/mask" />
 
-                    <!--Button 9-->
-                    <Button
-                        android:id="@+id/bitri"
-                        style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="wrap_content"
-                        android:layout_height="76dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#00FFFFFF"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/mask"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.0" />
 
-                    <RelativeLayout
-                        android:id="@+id/iconBitri"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:background="@drawable/bi_tri_filter"
-                        app:layout_constraintBottom_toBottomOf="@+id/bitri"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.6"
-                        app:layout_constraintStart_toEndOf="@+id/mask"
-                        app:layout_constraintTop_toTopOf="@+id/bitri" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -351,7 +326,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="invisible">
 
             <Button
                 android:id="@+id/buttonCancel"
