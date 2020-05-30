@@ -57,11 +57,11 @@ class BlackWhiteFragment : Fragment() {
         seekBlackWhite.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, b: Boolean) {
                 val temp = progress*2
-                textViewBlackWhite.text = "$temp%"
+                textViewBlackWhite.text = "$temp% black"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                val blackWhiteBitmap=blackWhiteImageFilter(Photo!!, 1-(seekBlackWhite.progress.toDouble())/100)
+                val blackWhiteBitmap=blackWhiteImageFilter(Photo!!, 2-(seekBlackWhite.progress.toDouble())/100)
                 (activity as SecondActivity).image_view.setImageBitmap(blackWhiteBitmap)
                 checkingResultSaved()
             }
