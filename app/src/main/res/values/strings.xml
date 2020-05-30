@@ -12,7 +12,7 @@
     //toasts
     <string name="saved">The picture has been saved</string>
     <string name="error">I\'m so sorry, I messed up somewhere and your photo didn\'t survive</string>
-    <string name="cube">Здесь будет кубик, отвечаю</string>
+    <string name="cube">Здесь будет кубик.Спасибо, что выбрали нас. Мы вас любим</string>
     <string name="permDen">Permission denied</string>
     <string name="photoSelect">Please select a photo</string>
 
