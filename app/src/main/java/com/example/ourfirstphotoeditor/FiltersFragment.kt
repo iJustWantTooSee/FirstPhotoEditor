@@ -73,11 +73,6 @@ class FiltersFragment : Fragment() {
             checkingResultSaved()
         }
 
-        filter2.setOnClickListener {
-            val blackAndWhitePicture=blackWhiteImageFilter(Photo!!)
-            (activity as SecondActivity).image_view.setImageBitmap(blackAndWhitePicture)
-            checkingResultSaved()
-        }
 
         filter3.setOnClickListener {
             val grayScalePicture=grayscaleFilters(Photo!!)
@@ -88,12 +83,6 @@ class FiltersFragment : Fragment() {
         filter4.setOnClickListener {
             val sepiaPicture=sepiaFilter(Photo!!)
             (activity as SecondActivity).image_view.setImageBitmap(sepiaPicture)
-            checkingResultSaved()
-        }
-
-        filter5.setOnClickListener {
-            val contrastPicture=contrastFilter(Photo!!)
-            (activity as SecondActivity).image_view.setImageBitmap(contrastPicture)
             checkingResultSaved()
         }
 
