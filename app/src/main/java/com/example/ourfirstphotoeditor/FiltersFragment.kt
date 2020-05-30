@@ -80,11 +80,6 @@ class FiltersFragment : Fragment() {
             checkingResultSaved()
         }
 
-        filter2.setOnClickListener {
-            val blackAndWhitePicture=blackWhiteImageFilter(Photo!!)
-            (activity as SecondActivity).image_view.setImageBitmap(blackAndWhitePicture)
-            checkingResultSaved()
-        }
 
         filter3.setOnClickListener {
             val grayScalePicture=grayscaleFilters(Photo!!)
@@ -98,11 +93,6 @@ class FiltersFragment : Fragment() {
             checkingResultSaved()
         }
 
-        filter5.setOnClickListener {
-            val contrastPicture=contrastFilter(Photo!!)
-            (activity as SecondActivity).image_view.setImageBitmap(contrastPicture)
-            checkingResultSaved()
-        }
 
         filter6.setOnClickListener {
             val redPicture=redFilter(Photo!!)
@@ -145,7 +135,7 @@ class FiltersFragment : Fragment() {
     }
 
     private fun imagePreview(bitmapPreview: Bitmap){
-        imageViewFilter0.setImageBitmap(firstImageBitmap)
+        imageViewFilter0.setImageBitmap(bitmapPreview)
         imageViewFilter1.setImageBitmap(negativeFilter(bitmapPreview))
         imageViewFilter3.setImageBitmap(grayscaleFilters(bitmapPreview))
         imageViewFilter4.setImageBitmap(sepiaFilter(bitmapPreview))
@@ -189,40 +179,7 @@ class FiltersFragment : Fragment() {
     }
 
 
-    private fun blackWhiteImageFilter(originBitmap: Bitmap):Bitmap{
-        val width=originBitmap.width
-        val height=originBitmap.height
 
-        val pixelsArray = IntArray(width*height)
-        originBitmap.getPixels(pixelsArray, 0, width, 0, 0, width, height)
-        val temp=IntArray(width*height)
-
-        val separator= 255/0.9/2*3
-        var blue: Int
-        var red: Int
-        var green: Int
-        var sumRGB=0
-
-        for (y in 0 until height){
-            for (x in 0 until width)  {
-                red= Color.red(pixelsArray[y*width+x])
-                green= Color.green(pixelsArray[y*width+x])
-                blue= Color.blue(pixelsArray[y*width+x])
-
-                sumRGB=red+green+blue
-
-                if (sumRGB>separator){
-                    temp[y*width+x]= Color.rgb(255, 255,255)
-                }
-                else{
-                    temp[y*width+x]= Color.rgb(0, 0,0)
-                }
-            }
-        }
-
-        return Bitmap.createBitmap(temp, width, height, Bitmap.Config.ARGB_8888)
-
-    }
 
     private fun grayscaleFilters(originBitmap: Bitmap):Bitmap{
         val width=originBitmap.width
@@ -288,58 +245,7 @@ class FiltersFragment : Fragment() {
 
     }
 
-    private fun contrastFilter(originBitmap: Bitmap):Bitmap {
-        val width=originBitmap.width
-        val height=originBitmap.height
-        var coefficient:Int =2
 
-        val pixelsArray = IntArray(width*height)
-        originBitmap.getPixels(pixelsArray, 0, width, 0, 0, width, height)
-        val pallete=IntArray(256)
-
-        var blue: Int
-        var red: Int
-        var green: Int
-
-        var avg=0
-        var temp=0
-        for (y in 0 until height){
-            for (x in 0 until width)  {
-                red= Color.red(pixelsArray[y*width+x])
-                green=Color.green(pixelsArray[y*width+x])
-                blue=Color.blue(pixelsArray[y*width+x])
-
-                avg+=(red*0.299+green*0.587+blue*0.114).toInt()
-
-
-            }
-        }
-        avg/=(height*width)
-        for (i in 0 until 256){
-            temp=(avg+coefficient*(i-avg)).toInt()
-            if (temp<0){
-                temp=0
-            }
-            else{
-                if (temp>255){
-                    temp=255
-                }
-            }
-            pallete[i]=temp
-        }
-
-        for (y in 0 until height){
-            for (x in 0 until width)  {
-                red= Color.red(pixelsArray[y*width+x])
-                green=Color.green(pixelsArray[y*width+x])
-                blue=Color.blue(pixelsArray[y*width+x])
-
-                pixelsArray[y*width+x]=Color.rgb(pallete[red],pallete[green],pallete[blue])
-
-            }
-        }
-        return Bitmap.createBitmap(pixelsArray, width, height, Bitmap.Config.ARGB_8888)
-    }
 
     private fun redFilter(originBitmap: Bitmap): Bitmap{
         val width=originBitmap.width
